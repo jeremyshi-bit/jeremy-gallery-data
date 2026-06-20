@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "albums": [
+    {
+      "id": "milano",
+      "title": "Milano",
+      "photos": [
+        {
+          "id": "milano-001",
+          "title": "Milano 001",
+          "image": "https://www.jeremy.gallery/portfolio/milano"
+        }
+      ]
+    }
+  ]
+}
