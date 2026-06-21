@@ -1,8 +1,9 @@
+import base64
 import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, unquote
 
 import requests
 from bs4 import BeautifulSoup
@@ -141,6 +142,56 @@ def get_portfolio_pages_from_sitemap() -> list[str]:
     return pages
 
 
+def decode_pixpa_asset_path(url: str) -> str:
+    """
+    Try to recover the original source asset path from a Pixpa CDN URL.
+
+    Example decoded result may look like:
+    s3://pixpa-test/com/large/690527/1688802759-790490-010-d-sony-milano021.jpg
+    """
+    parsed = urlparse(url)
+    path = parsed.path.strip("/")
+    segments = path.split("/")
+
+    # Find the segment that looks like base64 payload (often starts with czM6Ly...)
+    for segment in reversed(segments):
+        candidate = unquote(segment)
+
+        # skip obvious path operators like rs:fit:1500:0 or q:80
+        if ":" in candidate and not candidate.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+            continue
+
+        # try base64 decode
+        try:
+            padded = candidate + "=" * (-len(candidate) % 4)
+            decoded = base64.b64decode(padded).decode("utf-8", errors="ignore")
+            if decoded.startswith("s3://") or decoded.startswith("http://") or decoded.startswith("https://"):
+                return decoded
+        except Exception:
+            pass
+
+    # fallback: raw url path
+    return url
+
+
+def canonical_image_key(url: str) -> str:
+    """
+    Produce a stable dedupe key for the original image.
+    Prefer the original decoded filename/path from Pixpa.
+    """
+    decoded_path = decode_pixpa_asset_path(url)
+
+    # Try to extract filename
+    parsed = urlparse(decoded_path)
+    filename = parsed.path.split("/")[-1] if parsed.path else decoded_path.split("/")[-1]
+    filename = unquote(filename).lower()
+
+    if filename and "." in filename:
+        return filename
+
+    return decoded_path.lower()
+
+
 def extract_images_from_page(page_url: str) -> list[str]:
     print(f"[INFO] Reading portfolio page: {page_url}")
 
@@ -178,10 +229,18 @@ def extract_images_from_page(page_url: str) -> list[str]:
                 if is_real_gallery_image(full_url):
                     candidates.append(full_url)
 
-    # 去重并保持顺序
-    images = list(dict.fromkeys(candidates))
+    print(f"[INFO] Raw matched images: {len(candidates)}")
 
-    print(f"[INFO] Found {len(images)} images from {page_url}")
+    # 按原始图片文件名去重
+    deduped = {}
+    for image_url in candidates:
+        key = canonical_image_key(image_url)
+        if key not in deduped:
+            deduped[key] = image_url
+
+    images = list(deduped.values())
+
+    print(f"[INFO] Unique images after dedupe: {len(images)} from {page_url}")
     return images
 
 
