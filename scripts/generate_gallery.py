@@ -346,10 +346,7 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
             if stable_rounds >= 4:
                 break
 
-        html = page.content()
-        browser.close()
-
-    candidates.extend(extract_candidate_urls_from_html(page_url, html))
+                browser.close()
 
     return candidates
 
@@ -357,30 +354,29 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
 def extract_images_from_page(page_url: str) -> list[str]:
     print(f"[INFO] Reading portfolio page: {page_url}")
 
-    # 先抓静态 HTML
-    html = fetch_text(page_url)
-    static_candidates = extract_candidate_urls_from_html(page_url, html) if html else []
-
-    print(f"[INFO] Static matched images: {len(static_candidates)}")
-
-    # 再用浏览器滚动抓 lazy loaded 图片
+    # 先用真实浏览器滚动页面，抓取当前相册真正可见的图片
     browser_candidates = extract_candidate_urls_with_browser(page_url)
 
-    all_candidates = static_candidates + browser_candidates
+    print(f"[INFO] Browser visible matched images: {len(browser_candidates)}")
 
-    print(f"[INFO] Raw matched images: {len(all_candidates)}")
+    # 如果浏览器没有抓到，再 fallback 到静态 HTML
+    if not browser_candidates:
+        print("[WARN] Browser found no images. Falling back to static HTML.")
+        html = fetch_text(page_url)
+        browser_candidates = extract_candidate_urls_from_html(page_url, html) if html else []
 
     deduped = {}
-    
-    for image_url in all_candidates:
+
+    for image_url in browser_candidates:
         key = canonical_image_key(image_url)
-        
+
         if key not in deduped:
             deduped[key] = image_url
-            
+
     images = list(deduped.values())
+
+    print(f"[INFO] Final unique visible images after dedupe: {len(images)} from {page_url}")
     
-    print(f"[INFO] Unique visible images after dedupe: {len(images)} from {page_url}")
     return images
 
 def build_gallery_json() -> dict:
