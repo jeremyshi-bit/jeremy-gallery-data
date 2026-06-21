@@ -272,7 +272,7 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
 
         for round_index in range(1, 31):
             page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-            page.wait_for_timeout(1500)
+            page.wait_for_timeout(1800)
 
             current_urls = page.evaluate(
                 """
@@ -288,18 +288,30 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
                         "data-srcset"
                     ];
 
-                    document.querySelectorAll("*").forEach(el => {
+                    function isVisibleElement(el) {
+                        const rect = el.getBoundingClientRect();
+                        const style = window.getComputedStyle(el);
+
+                        if (!style) return false;
+                        if (style.display === "none") return false;
+                        if (style.visibility === "hidden") return false;
+                        if (parseFloat(style.opacity || "1") === 0) return false;
+
+                        // The image may be above the current viewport after scrolling,
+                        // but it still belongs to the page layout if it has real size.
+                        if (rect.width < 20 || rect.height < 20) return false;
+
+                        return true;
+                    }
+
+                    document.querySelectorAll("img, source, a, picture").forEach(el => {
+                        if (!isVisibleElement(el)) return;
+
                         for (const attr of attrs) {
                             const value = el.getAttribute(attr);
                             if (value) {
                                 urls.push(value);
                             }
-                        }
-
-                        const style = window.getComputedStyle(el);
-                        const bg = style && style.backgroundImage;
-                        if (bg && bg.includes("url(")) {
-                            urls.push(bg);
                         }
                     });
 
@@ -309,27 +321,20 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
             )
 
             for value in current_urls:
-                # handle CSS background-image: url("...")
-                bg_matches = re.findall(r"url\([\"']?(.*?)[\"']?\)", value)
-                raw_values = bg_matches if bg_matches else [value]
+                possible_values = extract_urls_from_srcset(value) if "," in value else [value]
 
-                for raw_value in raw_values:
-                    if "," in raw_value and "srcset" not in raw_value:
-                        possible_values = [raw_value]
-                    else:
-                        possible_values = extract_urls_from_srcset(raw_value) if "," in raw_value else [raw_value]
+                for possible_url in possible_values:
+                    full_url = urljoin(page_url, possible_url).replace("&amp;", "&")
 
-                    for possible_url in possible_values:
-                        full_url = urljoin(page_url, possible_url).replace("&amp;", "&")
-                        if is_real_gallery_image(full_url):
-                            candidates.append(full_url)
+                    if is_real_gallery_image(full_url):
+                        candidates.append(full_url)
 
             unique_keys = {canonical_image_key(url) for url in candidates}
             current_unique_count = len(unique_keys)
 
             print(
                 f"[INFO] Scroll round {round_index}: "
-                f"unique images so far = {current_unique_count}"
+                f"visible unique images so far = {current_unique_count}"
             )
 
             if current_unique_count == previous_unique_count:
@@ -338,14 +343,12 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
                 stable_rounds = 0
                 previous_unique_count = current_unique_count
 
-            # 连续 4 次滚动后没有新增图片，就认为加载结束
             if stable_rounds >= 4:
                 break
 
         html = page.content()
         browser.close()
 
-    # 额外从最终 HTML 再抓一次
     candidates.extend(extract_candidate_urls_from_html(page_url, html))
 
     return candidates
@@ -367,27 +370,18 @@ def extract_images_from_page(page_url: str) -> list[str]:
 
     print(f"[INFO] Raw matched images: {len(all_candidates)}")
 
-    album_id = slug_from_url(page_url)
-    
     deduped = {}
-    skipped_not_album = 0
     
     for image_url in all_candidates:
-        key = album_specific_image_key(album_id, image_url)
+        key = canonical_image_key(image_url)
         
-        if key is None:
-            skipped_not_album += 1
-            continue
-            
         if key not in deduped:
             deduped[key] = image_url
             
     images = list(deduped.values())
     
-    print(f"[INFO] Skipped non-album images: {skipped_not_album}")
-    print(f"[INFO] Unique album images after dedupe: {len(images)} from {page_url}")
+    print(f"[INFO] Unique visible images after dedupe: {len(images)} from {page_url}")
     return images
-
 
 def build_gallery_json() -> dict:
     pages = get_portfolio_pages_from_sitemap()
