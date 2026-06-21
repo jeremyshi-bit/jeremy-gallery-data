@@ -281,7 +281,7 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
 
             for value in current_urls:
                 # handle CSS background-image: url("...")
-                bg_matches = re.findall(r'url\\(["\\']?(.*?)["\\']?\\)', value)
+                bg_matches = re.findall(r"url\([\"']?(.*?)[\"']?\)", value)
                 raw_values = bg_matches if bg_matches else [value]
 
                 for raw_value in raw_values:
