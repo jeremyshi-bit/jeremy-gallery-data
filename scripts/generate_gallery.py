@@ -1,6 +1,7 @@
 import base64
 import json
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, unquote
@@ -8,6 +9,7 @@ from urllib.parse import urljoin, urlparse, unquote
 import requests
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
+from playwright.sync_api import sync_playwright
 
 
 SITE_URL = "https://www.jeremy.gallery"
@@ -80,6 +82,7 @@ def is_real_gallery_image(url: str) -> bool:
         "loader",
         "spinner",
         "placeholder",
+        "avatar",
     ]
 
     if any(word in lower_url for word in blocked_keywords):
@@ -153,15 +156,13 @@ def decode_pixpa_asset_path(url: str) -> str:
     path = parsed.path.strip("/")
     segments = path.split("/")
 
-    # Find the segment that looks like base64 payload (often starts with czM6Ly...)
     for segment in reversed(segments):
         candidate = unquote(segment)
 
-        # skip obvious path operators like rs:fit:1500:0 or q:80
+        # skip obvious CDN operation segments, such as rs:fit:1500:0 or q:80
         if ":" in candidate and not candidate.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
             continue
 
-        # try base64 decode
         try:
             padded = candidate + "=" * (-len(candidate) % 4)
             decoded = base64.b64decode(padded).decode("utf-8", errors="ignore")
@@ -170,7 +171,6 @@ def decode_pixpa_asset_path(url: str) -> str:
         except Exception:
             pass
 
-    # fallback: raw url path
     return url
 
 
@@ -181,7 +181,6 @@ def canonical_image_key(url: str) -> str:
     """
     decoded_path = decode_pixpa_asset_path(url)
 
-    # Try to extract filename
     parsed = urlparse(decoded_path)
     filename = parsed.path.split("/")[-1] if parsed.path else decoded_path.split("/")[-1]
     filename = unquote(filename).lower()
@@ -192,14 +191,7 @@ def canonical_image_key(url: str) -> str:
     return decoded_path.lower()
 
 
-def extract_images_from_page(page_url: str) -> list[str]:
-    print(f"[INFO] Reading portfolio page: {page_url}")
-
-    html = fetch_text(page_url)
-
-    if not html:
-        return []
-
+def extract_candidate_urls_from_html(page_url: str, html: str) -> list[str]:
     soup = BeautifulSoup(html, "lxml")
     candidates = []
 
@@ -229,11 +221,125 @@ def extract_images_from_page(page_url: str) -> list[str]:
                 if is_real_gallery_image(full_url):
                     candidates.append(full_url)
 
-    print(f"[INFO] Raw matched images: {len(candidates)}")
+    return candidates
 
-    # 按原始图片文件名去重
+
+def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
+    print(f"[INFO] Opening page with browser: {page_url}")
+
+    candidates = []
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page(
+            viewport={"width": 1440, "height": 2200},
+            user_agent=HEADERS["User-Agent"],
+        )
+
+        page.goto(page_url, wait_until="networkidle", timeout=60000)
+
+        previous_unique_count = 0
+        stable_rounds = 0
+
+        for round_index in range(1, 31):
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            page.wait_for_timeout(1500)
+
+            current_urls = page.evaluate(
+                """
+                () => {
+                    const urls = [];
+                    const attrs = [
+                        "src",
+                        "href",
+                        "data-src",
+                        "data-original",
+                        "data-large",
+                        "srcset",
+                        "data-srcset"
+                    ];
+
+                    document.querySelectorAll("*").forEach(el => {
+                        for (const attr of attrs) {
+                            const value = el.getAttribute(attr);
+                            if (value) {
+                                urls.push(value);
+                            }
+                        }
+
+                        const style = window.getComputedStyle(el);
+                        const bg = style && style.backgroundImage;
+                        if (bg && bg.includes("url(")) {
+                            urls.push(bg);
+                        }
+                    });
+
+                    return urls;
+                }
+                """
+            )
+
+            for value in current_urls:
+                # handle CSS background-image: url("...")
+                bg_matches = re.findall(r'url\\(["\\']?(.*?)["\\']?\\)', value)
+                raw_values = bg_matches if bg_matches else [value]
+
+                for raw_value in raw_values:
+                    if "," in raw_value and "srcset" not in raw_value:
+                        possible_values = [raw_value]
+                    else:
+                        possible_values = extract_urls_from_srcset(raw_value) if "," in raw_value else [raw_value]
+
+                    for possible_url in possible_values:
+                        full_url = urljoin(page_url, possible_url).replace("&amp;", "&")
+                        if is_real_gallery_image(full_url):
+                            candidates.append(full_url)
+
+            unique_keys = {canonical_image_key(url) for url in candidates}
+            current_unique_count = len(unique_keys)
+
+            print(
+                f"[INFO] Scroll round {round_index}: "
+                f"unique images so far = {current_unique_count}"
+            )
+
+            if current_unique_count == previous_unique_count:
+                stable_rounds += 1
+            else:
+                stable_rounds = 0
+                previous_unique_count = current_unique_count
+
+            # 连续 4 次滚动后没有新增图片，就认为加载结束
+            if stable_rounds >= 4:
+                break
+
+        html = page.content()
+        browser.close()
+
+    # 额外从最终 HTML 再抓一次
+    candidates.extend(extract_candidate_urls_from_html(page_url, html))
+
+    return candidates
+
+
+def extract_images_from_page(page_url: str) -> list[str]:
+    print(f"[INFO] Reading portfolio page: {page_url}")
+
+    # 先抓静态 HTML
+    html = fetch_text(page_url)
+    static_candidates = extract_candidate_urls_from_html(page_url, html) if html else []
+
+    print(f"[INFO] Static matched images: {len(static_candidates)}")
+
+    # 再用浏览器滚动抓 lazy loaded 图片
+    browser_candidates = extract_candidate_urls_with_browser(page_url)
+
+    all_candidates = static_candidates + browser_candidates
+
+    print(f"[INFO] Raw matched images: {len(all_candidates)}")
+
     deduped = {}
-    for image_url in candidates:
+    for image_url in all_candidates:
         key = canonical_image_key(image_url)
         if key not in deduped:
             deduped[key] = image_url
