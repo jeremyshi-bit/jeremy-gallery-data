@@ -21,7 +21,7 @@ SITEMAP_URLS = [
 ]
 
 # 测试阶段：先只抓 Milano，确认成功后再改成 False 抓全部相册
-TEST_ONLY_MILANO = True
+TEST_ONLY_MILANO = False
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
