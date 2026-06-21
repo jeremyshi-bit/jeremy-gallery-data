@@ -191,6 +191,35 @@ def canonical_image_key(url: str) -> str:
     return decoded_path.lower()
 
 
+def album_specific_image_key(album_id: str, url: str) -> str | None:
+    """
+    Keep only images that appear to belong to the current album.
+
+    For Milano, original Pixpa filenames look like:
+    1688802759-790490-010-d-sony-milano021.jpg
+
+    This function converts different URL variants of the same image into:
+    milano021
+    """
+    decoded_path = decode_pixpa_asset_path(url)
+    filename = decoded_path.split("/")[-1].lower()
+
+    normalized_filename = re.sub(r"[^a-z0-9]+", "", filename)
+    normalized_album_id = re.sub(r"[^a-z0-9]+", "", album_id.lower())
+
+    if normalized_album_id not in normalized_filename:
+        return None
+
+    # Prefer album + number as the dedupe key, e.g. milano021
+    match = re.search(rf"{re.escape(normalized_album_id)}0*(\d+)", normalized_filename)
+
+    if match:
+        number = int(match.group(1))
+        return f"{normalized_album_id}{number:03d}"
+
+    return filename
+
+
 def extract_candidate_urls_from_html(page_url: str, html: str) -> list[str]:
     soup = BeautifulSoup(html, "lxml")
     candidates = []
@@ -338,15 +367,25 @@ def extract_images_from_page(page_url: str) -> list[str]:
 
     print(f"[INFO] Raw matched images: {len(all_candidates)}")
 
+    album_id = slug_from_url(page_url)
+    
     deduped = {}
+    skipped_not_album = 0
+    
     for image_url in all_candidates:
-        key = canonical_image_key(image_url)
+        key = album_specific_image_key(album_id, image_url)
+        
+        if key is None:
+            skipped_not_album += 1
+            continue
+            
         if key not in deduped:
             deduped[key] = image_url
-
+            
     images = list(deduped.values())
-
-    print(f"[INFO] Unique images after dedupe: {len(images)} from {page_url}")
+    
+    print(f"[INFO] Skipped non-album images: {skipped_not_album}")
+    print(f"[INFO] Unique album images after dedupe: {len(images)} from {page_url}")
     return images
 
 
