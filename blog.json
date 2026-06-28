@@ -23,11 +23,11 @@
       "content": "A mobile gallery should feel calm and easy to navigate.\n\nThe goal is not to overload the screen, but to allow each image and each album to breathe.\n\nNavigation should be simple, visual hierarchy should be clear, and the user should always know where they are."
     },
     {
-  "id": "remote-blog-json-test",
-  "title": "Remote Blog JSON Test",
-  "date": "2026-06-28",
-  "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages.",
-  "content": "This is a test post from the remote blog.json file.\n\nIf this article appears in the app, it means the Blog page is successfully loading content from GitHub Pages instead of only using local sample data."
-  }
+      "id": "remote-blog-json-test",
+      "title": "Remote Blog JSON Test",
+      "date": "2026-06-28",
+      "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages.",
+      "content": "This is a test post from the remote blog.json file.\n\nIf this article appears in the app, it means the Blog page is successfully loading content from GitHub Pages instead of only using local sample data."
+    }
   ]
 }
