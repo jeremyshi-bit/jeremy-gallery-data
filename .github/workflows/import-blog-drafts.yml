@@ -1,0 +1,38 @@
+name: Import Blog Drafts
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-blog-drafts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Discover blog URLs
+        run: python scripts/discover_blog_urls.py
+
+      - name: Import blog drafts from website
+        run: python scripts/import_blog_from_website.py
+
+      - name: Generate blog.json
+        run: python scripts/generate_blog.py
+
+      - name: Commit imported blog drafts
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Import blog drafts from website"
+          file_pattern: |
+            discovered_blog_urls.json
+            posts/imported/*.md
+            blog.json
