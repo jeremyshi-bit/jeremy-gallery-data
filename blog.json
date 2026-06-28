@@ -27,6 +27,7 @@
       "title": "Remote Blog JSON Test",
       "date": "2026-06-28",
       "isPublished": true,
+      "isFeatured": true,
       "updatedAt": "2026-06-28",
       "author": "Jeremy",
       "coverImageUrl": "https://picsum.photos/seed/jeremy-blog-json-test/1200/800",
