@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -28,11 +30,25 @@ jobs:
       - name: Generate blog.json
         run: python scripts/generate_blog.py
 
+      - name: Show generated files
+        run: |
+          echo "Generated imported posts:"
+          ls -la posts/imported || true
+          echo "Git status:"
+          git status --short
+
       - name: Commit imported blog drafts
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Import blog drafts from website"
-          file_pattern: |
-            discovered_blog_urls.json
-            posts/imported/*.md
-            blog.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add discovered_blog_urls.json
+          git add posts/imported/*.md
+          git add blog.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Import blog drafts from website"
+            git push
+          fi
