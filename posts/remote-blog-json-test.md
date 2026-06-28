@@ -9,7 +9,7 @@ The Blog list information still comes from `blog.json`, but the full article con
 ## Why this matters
 
 Using a separate Markdown file makes long blog posts easier to maintain.
-
+![Remote Markdown image test](https://picsum.photos/seed/markdown-image-test/1200/800)
 Instead of putting a long article directly inside `blog.json`, the JSON file can stay clean and focused on metadata:
 
 - Title
