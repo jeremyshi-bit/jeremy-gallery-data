@@ -31,6 +31,6 @@ Farther out, a blue Lamborghini tractor waited—likely for pushback duty—its 
 
 A simple airport moment, but one where the machinery tells its own story—functional, iconic, and unmistakably tied to the character of the place.
 
-Share
+## Photos
 
-Previous Post
+![Jeremy Gallery - Bologna Airport photo 1](https://px-web-images5.pixpa.com/wSca61MBUzKEA6kasYgZ03etnivS6peOmtaMKK2vw2E/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MjgyMTA5Ni0zMDU5MjEtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMS5qcGc=)

@@ -34,3 +34,11 @@ With the 135mm, every step became deliberate.
 Framing tightened, layers shifted, and the flowers began to feel less like decoration and more like part of a larger scene—spring unfolding, people passing, wind brushing through the canopy.
 
 A lens that usually compresses the world suddenly offered a quiet, cinematic way to see it.
+
+## Photos
+
+![Jeremy Gallery - Spring Flowers photo 1](https://px-web-images4.pixpa.com/bR32k43Qf0wSrR1sKHFuU7Ae2ruHpAs00IV3w3Bs8A0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY1NzkxNi0xNDcwNjQtMDAwLXNwcmluZy1mbG93ZXItMDAyLmpwZw==)
+
+![Jeremy Gallery - Spring Flowers photo 2](https://px-web-images5.pixpa.com/eraWtB-PJhkah1r-Zg6tt-PzDEFp8HUB8k0AR9tYgFE/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY1ODEwNy0xMDg4NDgtMDAwLXNwcmluZy1mbG93ZXItMDAzLmpwZw==)
+
+![Jeremy Gallery - Spring Flowers photo 3](https://px-web-images7.pixpa.com/CS-Frkh8f8ojpwpwWAgCdzJ-EoLU22unE_YA66omvnE/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY1ODI3Ny0zNzI1MjItMDAwLXNwcmluZy1mbG93ZXItMDA1LmpwZw==)

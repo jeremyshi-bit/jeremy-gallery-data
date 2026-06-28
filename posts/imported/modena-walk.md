@@ -34,3 +34,15 @@ Inside the courtyard, the scene felt almost theatrical. Light bounced off polish
 Behind the Academy, the path opened into Corso Camillo Benso Conte di Cavour, where the festival spilled into the city like a moving set.
 
 And just when the moment felt still, someone eased a Ferrari 308 GTB through the street—engine rumbling softly, turning the entire scene into a frame from a film.
+
+## Photos
+
+![Jeremy Gallery - Modena Walk photo 1](https://px-web-images5.pixpa.com/GUFYQ_urMZwsn3QCsAVPK1awyXZCzi5pTRN3lRMtRh0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzAyNDA1MC04MzI0NDAtMDA1LWItbW9kZW5hLTAwMi5qcGc=)
+
+![Jeremy Gallery - Modena Walk photo 2](https://px-web-images4.pixpa.com/sw2mk1Eo7zUUz1qFb5UCJtnWiarBfkaazPLt1W9tGFI/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzAyNDM4Ni0yNzk3MjMtMDA1LWItbW9kZW5hLTAwMy5qcGc=)
+
+![Jeremy Gallery - Modena Walk photo 3](https://px-web-images8.pixpa.com/4fwBleYGcMcSeYlKAv0AVotNsjZg52mI9txXU9t3lko/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzAyNDY3Ni05NDMwOTYtMDA1LWItbW9kZW5hLTAwNC5qcGc=)
+
+![Jeremy Gallery - Modena Walk photo 4](https://px-web-images2.pixpa.com/EPg__cNY7XqebpSaUvWlwfJSZ3tfxY-90JfP-bgptVg/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzAyNTA4OC02MTg4NTEtMDA1LWItbW9kZW5hLTAwNS5qcGc=)
+
+![Jeremy Gallery - Modena Walk photo 5](https://px-web-images3.pixpa.com/RyLJGnF1y-Dni8EEI1D2TMeUQczNpNTLbZmxV7hauug/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzAyNTQyNS0yOTMyNjYtMDA1LWItbW9kZW5hLTAwNi5qcGc=)

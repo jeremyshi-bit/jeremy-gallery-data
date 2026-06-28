@@ -31,6 +31,14 @@ As you venture deeper into the heart of the city, make your way to Chinatown, wh
 
 A city walk in Singapore at night is an enchanting experience that offers a captivating glimpse into the city’s vibrant nightlife and cultural tapestry. So, lace up your walking shoes, embrace the energy of the city, and embark on a journey of discovery through the luminous streets of Singapore after dark.
 
-Share
+## Photos
 
-Previous Post
+![Jeremy Gallery photo 1](https://web-images.pixpa.com/mDByv6rR7zIOSDu8AyYiK7QvRNe48UOMJiBsgrYUok0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTcxMzEwNDg2OS04MDQyNzAtMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwMS5qcGc=)
+
+![Jeremy Gallery photo 2](https://web-images.pixpa.com/LWRcbDhjaknIEGQVvTDh0ug1zj0_ZANn2R0IwuLmX0A/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTcxMzEwNDc2Mi00MzQ2ODYtMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwMy5qcGc=)
+
+![Jeremy Gallery photo 3](https://web-images.pixpa.com/BGjJvEbSYVrVkecw-WymH41enceX6fZxUgx-LWd10Vc/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTcxMzEwNDk4OS00Mzk1ODktMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwMi5qcGc=)
+
+![Jeremy Gallery photo 4](https://web-images.pixpa.com/wyGKl6LLBcRNXaA74bIQzLk2n_jvKW-fjE5YIyJEZu8/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTcxMzEwNTA0MS00OTk5MDMtMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwNS5qcGc=)
+
+![Jeremy Gallery photo 5](https://web-images.pixpa.com/91Uqfvoq7Kz3_WDyqdKWrI2qqYwJbu-HFWkA4YO0BKk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTcxMzEwNTEyNC02MjA3MDQtMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwNi5qcGc=)

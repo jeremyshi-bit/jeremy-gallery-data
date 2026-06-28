@@ -34,3 +34,7 @@ The real thing.
 A rare machine with a short production life of under four years and fewer than ten thousand built. A true 4WD SUV, offered in both three-door (the cooler one) and five-door versions. Rugged, square-shouldered, unmistakably utilitarian.
 
 Seeing it parked here at Monza, surrounded by water, engines, and winter air, felt like encountering a ghost from a document—pulled into reality, framed by the quiet drama of a race weekend finally escaping the rain.
+
+## Photos
+
+![Jeremy Gallery - Iveco Massif photo 1](https://px-web-images5.pixpa.com/iP2DHThSnFYh-8-MnxFND4OiFTGbTS_EfhAI4dxgi4w/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTkxNDg2NS0zMjI5MjQtMDAwLW1hc3NpdmUtMDAxLmpwZw==)

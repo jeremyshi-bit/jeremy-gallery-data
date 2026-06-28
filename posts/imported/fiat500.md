@@ -40,3 +40,9 @@ A simple scene becomes a memory.
 A quiet yard becomes a story.
 
 And a yellow car becomes the backdrop to a moment that feels both fleeting and timeless.
+
+## Photos
+
+![Jeremy Gallery - Fiat 500 photo 1](https://px-web-images3.pixpa.com/zMr09xaIboXgXer_KkY0mssFuMLPPyL8jdBzfyQMngk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzQ2NzA0NS0xODIyMTEtMDA1LWItZmlhdC1hYmFydGgtMDAxLmpwZw==)
+
+![Jeremy Gallery - Fiat 500 photo 2](https://px-web-images9.pixpa.com/slijL65umT56RRT26lrqJoMmiST4YeD6zaSxh82RS08/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzQ2NzExNy02NDY0NjMtMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==)

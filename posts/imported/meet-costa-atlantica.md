@@ -28,3 +28,9 @@ Morning light drifted across the harbor as a massive cruise ship—Costa Atlanti
 The stop at Jeju was just one chapter in a voyage that crossed oceans and seasons, but for a moment the ship felt anchored in stillness. Crew moved along the decks, passengers gathered at the rails, and the soft hum of engines lingered in the cool island air.
 
 A brief meeting with a traveler built for distance—caught between departure and the next horizon.
+
+## Photos
+
+![Jeremy Gallery - Costa Atlantica photo 1](https://px-web-images1.pixpa.com/pD6KaKiwJoAVW-fUw7aOUVsYLfTmoYHakJXktGzZm8g/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTI2OS03ODgxMjgtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMi5qcGc=)
+
+![Jeremy Gallery - Costa Atlantica photo 2](https://px-web-images3.pixpa.com/2wTINr0Ch1MMhRQ0BOlXtXRPKAFa4HjbwZW1n0oQAgw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTY4OS0zNjc1ODAtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMy5qcGc=)
