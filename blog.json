@@ -31,6 +31,7 @@
       "readingMinutes": 3,
       "updatedAt": "2026-06-28",
       "author": "Jeremy",
+      "language": "en",
       "coverImageUrl": "https://picsum.photos/seed/jeremy-blog-json-test/1200/800",
       "sourcePageUrl": "https://www.jeremy.gallery",
       "tags": ["Test", "Blog", "JSON"],
