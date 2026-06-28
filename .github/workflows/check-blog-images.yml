@@ -36,16 +36,19 @@ jobs:
 
           md = md_path.read_text(encoding="utf-8")
 
-          m = re.search(r'^sourcePageUrl:\s*["\']?([^"\']+)["\']?', md, re.M)
+          m = re.search(r'^sourcePageUrl:\s*(.+?)\s*$', md, re.M)
           if not m:
               raise SystemExit("No sourcePageUrl found in markdown front matter.")
 
-          url = m.group(1).strip()
+          url = m.group(1).strip().strip('"').strip("'")
           print("Source URL:", url)
 
           req = urllib.request.Request(
               url,
-              headers={"User-Agent": "Mozilla/5.0"}
+              headers={
+                  "User-Agent": "Mozilla/5.0",
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+              }
           )
 
           html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
