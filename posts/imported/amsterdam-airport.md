@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - AMS](https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Nov 18, 2019
 
 Amsterdam Airport
@@ -43,52 +35,10 @@ My flight was ready. Boarding was about to begin.
 
 A brief pause, a final look across the tarmac lit by cold sodium light—then it was time to leave for the next stop.
 
-Tags:
+## Photos
 
-photohgraphy
+![Jeremy Gallery - AMS photo 1](https://px-web-images5.pixpa.com/PkEUoA1iPhjFt86jzxH8AIQiP4-FMvtAyVzE0GAcoKw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0MzI2MC00NTE0NjYtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAxLmpwZw==)
 
-Airport
+![Jeremy Gallery - AMS photo 2](https://px-web-images2.pixpa.com/5m562gkLqWkkonUHwvVn_NetULdBpIw6kbTjUPCZNe4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDEyNi0yNjA5MDQtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAzLmpwZw==)
 
-Share
-
-http://www.jeremy.gallery/blog/amsterdam-airport
-
-Copied
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/amsterdam-airport
-
-Copied
+![Jeremy Gallery - AMS photo 3](https://px-web-images5.pixpa.com/3O5gk1Ajgk0CBEiROsooHmYCiSjgbjwFp0572mtWTX4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDUyMS03NTQyOTUtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDA0LmpwZw==)

@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - Ferrari 812 Superfast](https://px-web-images-v2.pixpa.com/dYPALdO5qymANyUrkn5xMRh-bnJYOKtYP2ZLao-oA_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE4MjgyODAtMDAwLTgxMi1zdXBlci0wMDUuanBn)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Jun 10, 2019
 
 Ferrari 812 Superfast
@@ -44,57 +36,3 @@ But a 24mm tells the whole story—car and environment woven together, a scene r
 So I stayed and kept looking.
 
 Because some cars invite you to linger, and the 812 Superfast—with its presence, its proportions, its quiet confidence—is one you don’t forget easily.
-
-Tags:
-
-photohgraphy
-
-cars
-
-Ferrari
-
-Share
-
-http://www.jeremy.gallery/blog/ferrari812superfast
-
-Copied
-
-Previous Post
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/ferrari812superfast
-
-Copied

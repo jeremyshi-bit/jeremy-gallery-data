@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - Bologna Airport](https://px-web-images-v2.pixpa.com/TlFcbrowN25RZ9anIJfmYgZMaI54rk1qo4EMR1j1oSY/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI4MjEwNzQtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMi5qcGc=)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Jul 30, 2017
 
 Bologna Airport
@@ -41,46 +33,4 @@ A simple airport moment, but one where the machinery tells its own story—funct
 
 Share
 
-http://www.jeremy.gallery/blog/bologna-airport
-
-Copied
-
 Previous Post
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/bologna-airport
-
-Copied

@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - Iveco Massif](https://px-web-images-v2.pixpa.com/oD4_Dz1RlruJZCH1FlUe6X1T4vqHalOdaUEOYJU23yQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE5MTQxNzMtMDAwLW1hc3NpdmUtMDAyLmpwZw==)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Nov 03, 2018
 
 Iveco Massif @Monza
@@ -42,57 +34,3 @@ The real thing.
 A rare machine with a short production life of under four years and fewer than ten thousand built. A true 4WD SUV, offered in both three-door (the cooler one) and five-door versions. Rugged, square-shouldered, unmistakably utilitarian.
 
 Seeing it parked here at Monza, surrounded by water, engines, and winter air, felt like encountering a ghost from a document—pulled into reality, framed by the quiet drama of a race weekend finally escaping the rain.
-
-Tags:
-
-photohgraphy
-
-cars
-
-iveco
-
-Share
-
-http://www.jeremy.gallery/blog/iveco-massif-at-monza
-
-Copied
-
-Previous Post
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/iveco-massif-at-monza
-
-Copied

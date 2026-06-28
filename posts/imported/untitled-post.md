@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery](https://px-web-images-v2.pixpa.com/Fr9NAhaReVOnamwVKATUSJ_Dszx8rnmkV4sVY5TMGV4/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE3MTMxMDUyOTktMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwNi5qcGc=)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Aug 19, 2017
 
 A Night Walk in Singapore
@@ -41,46 +33,4 @@ A city walk in Singapore at night is an enchanting experience that offers a capt
 
 Share
 
-http://www.jeremy.gallery/blog/untitled-post
-
-Copied
-
 Previous Post
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/untitled-post
-
-Copied

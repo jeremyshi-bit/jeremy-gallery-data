@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - Modena Walk](https://px-web-images-v2.pixpa.com/jA4vI7b14hASNUx9Eb0H0mRlDTvWooHNjybrTLw_m_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODMwMjM4MzItMDA1LWItbW9kZW5hLTAwMS5qcGc=)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Sep 13, 2019
 
 Modena Walk
@@ -42,55 +34,3 @@ Inside the courtyard, the scene felt almost theatrical. Light bounced off polish
 Behind the Academy, the path opened into Corso Camillo Benso Conte di Cavour, where the festival spilled into the city like a moving set.
 
 And just when the moment felt still, someone eased a Ferrari 308 GTB through the street—engine rumbling softly, turning the entire scene into a frame from a film.
-
-Tags:
-
-photohgraphy
-
-Italy
-
-Share
-
-http://www.jeremy.gallery/blog/modena-walk
-
-Copied
-
-Previous Post
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/modena-walk
-
-Copied

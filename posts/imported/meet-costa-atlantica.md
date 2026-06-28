@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - Costa Atlantica](https://px-web-images-v2.pixpa.com/VSoBxxoNSKXJCRYXvXM1DVJrmVZn2JScaoOGSgsh7-U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NTA5MDMtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMS5qcGc=)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Nov 14, 2016
 
 Meet Costa Atlantica
@@ -36,53 +28,3 @@ Morning light drifted across the harbor as a massive cruise ship—Costa Atlanti
 The stop at Jeju was just one chapter in a voyage that crossed oceans and seasons, but for a moment the ship felt anchored in stillness. Crew moved along the decks, passengers gathered at the rails, and the soft hum of engines lingered in the cool island air.
 
 A brief meeting with a traveler built for distance—caught between departure and the next horizon.
-
-Tags:
-
-photohgraphy
-
-ship
-
-Share
-
-http://www.jeremy.gallery/blog/meet-costa-atlantica
-
-Copied
-
-Previous Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/meet-costa-atlantica
-
-Copied

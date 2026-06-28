@@ -17,14 +17,6 @@ readingMinutes: 2
 
 ![Jeremy Gallery - Designer's Cat](https://px-web-images-v2.pixpa.com/8ec4SU6WBSRJNivoPwcJ233Oz7FwyVX6oF80ocDIu3A/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NDAzMTAtMDAwLWRlc2lnbmVyLWNhdC0wMDMuanBn)
 
-Item
-
-BOOK A SESSION
-
-Item
-
-BOOK A SESSION
-
 Jul 29, 2018
 
 Designer's Cat
@@ -46,55 +38,3 @@ If you asked him to describe his world, it would sound something like this:
 “The kitchen is my kingdom. I don’t go anywhere else.”
 
 “Seafood is the meaning of life.”
-
-Tags:
-
-photohgraphy
-
-cat
-
-Share
-
-http://www.jeremy.gallery/blog/gingercat
-
-Copied
-
-Previous Post
-
-Next Post
-
-Latest Posts
-
-Amsterdam Airport
-
-Nov 18, 2019
-
-Modena Walk
-
-Sep 13, 2019
-
-Ferrari 812 Superfast
-
-Jun 10, 2019
-
-Follow me
-
-Nov 18, 2019
-
-Amsterdam Airport
-
-Sep 13, 2019
-
-Modena Walk
-
-Jun 10, 2019
-
-Ferrari 812 Superfast
-
-Please enable JavaScript to view the
-
-Share
-
-http://www.jeremy.gallery/blog/gingercat
-
-Copied
