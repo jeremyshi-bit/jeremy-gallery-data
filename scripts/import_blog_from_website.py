@@ -335,6 +335,71 @@ def extract_date(parser: BlogPageParser) -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+def extract_tags_from_text_lines(lines) -> list[str]:
+    tags = []
+    seen = set()
+    collecting = False
+
+    stop_lines = {
+        "share",
+        "copied",
+        "next post",
+        "latest posts",
+        "follow me",
+    }
+
+    skip_lines = {
+        "tags",
+        "tags:",
+        "item",
+        "book a session",
+    }
+
+    for line in lines:
+        line = normalize_text(line)
+        lower = line.lower()
+
+        if not line:
+            continue
+
+        if lower in {"tags", "tags:"}:
+            collecting = True
+            continue
+
+        if not collecting:
+            continue
+
+        if lower in stop_lines:
+            break
+
+        if lower.startswith("http://") or lower.startswith("https://"):
+            break
+
+        if lower.startswith("please enable javascript"):
+            break
+
+        if lower in skip_lines:
+            continue
+
+        # Tags should normally be short. This prevents accidentally capturing
+        # long paragraph text if the page structure changes.
+        if len(line) > 60:
+            break
+
+        if lower not in seen:
+            tags.append(line)
+            seen.add(lower)
+
+    return tags
+
+
+def format_tags(tags: list[str]) -> str:
+    if tags:
+        return ", ".join(tags)
+
+    return "Imported, Website"
+
+
 def clean_body_lines(lines, title):
     skip_lines = {
         "home",
@@ -437,6 +502,7 @@ def create_markdown_file(url: str):
     excerpt = extract_excerpt(parser)
     cover_image_url = extract_cover_image(parser, url)
     date = extract_date(parser)
+    tags = extract_tags_from_text_lines(parser.text_lines)
     body_lines = clean_body_lines(parser.text_lines, title)
     body_image_urls = extract_body_images(
         parser=parser,
@@ -463,7 +529,7 @@ def create_markdown_file(url: str):
     front_matter.extend(
         [
             f"sourcePageUrl: {url}",
-            "tags: Imported, Website",
+            f"tags: {safe_front_matter_value(format_tags(tags))}",
             "isPublished: false",
             "isFeatured: false",
             "readingMinutes: 2",
