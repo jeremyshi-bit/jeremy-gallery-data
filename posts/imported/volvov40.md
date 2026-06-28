@@ -8,7 +8,7 @@ language: en
 excerpt: A shape that feels like the natural successor to the C30—sporty, compact, and quietly confident. The hatchback proportions are beautiful, the stance low, and the 200-horsepower engine gives it a strength you don’t expect from something this
 coverImageUrl: https://px-web-images-v2.pixpa.com/HSn86T5i2Y-LFiDWEaiEvpKdm54wpLP8wuAOJ6R6sBc/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2MzA3OTYtMDAwLXZvbHZvLXY0MC0wMDIuanBn
 sourcePageUrl: https://www.jeremy.gallery/blog/volvov40
-tags: Imported, Website
+tags: cars
 isPublished: false
 isFeatured: false
 readingMinutes: 2

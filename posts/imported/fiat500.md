@@ -8,7 +8,7 @@ language: en
 excerpt: Sunlight was slipping toward evening, turning the town into a soft amber glow. In a small courtyard near the center, a yellow Fiat 500 rested quietly—bright, nostalgic, almost cinematic on its own.
 coverImageUrl: https://px-web-images-v2.pixpa.com/oZ5s794DAIJd5aaYp-gsQTWbm5E9toy72D4eTIlnx-Y/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODM0NjU3MjktMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==
 sourcePageUrl: https://www.jeremy.gallery/blog/fiat500
-tags: Imported, Website
+tags: photohgraphy, cars
 isPublished: false
 isFeatured: false
 readingMinutes: 2

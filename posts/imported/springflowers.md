@@ -8,7 +8,7 @@ language: en
 excerpt: Is an APS-C 135mm enough to photograph sakura in the park?
 coverImageUrl: https://px-web-images-v2.pixpa.com/n5BZlMS9rP77rDKX8tUCfA_Q36OoqXcHR7T13zpVruQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NTc2NDUtMDAwLXNwcmluZy1mbG93ZXItMDA0LmpwZw==
 sourcePageUrl: https://www.jeremy.gallery/blog/springflowers
-tags: Imported, Website
+tags: photohgraphy, plant
 isPublished: false
 isFeatured: false
 readingMinutes: 2

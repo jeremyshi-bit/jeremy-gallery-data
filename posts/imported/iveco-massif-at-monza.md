@@ -8,7 +8,7 @@ language: en
 excerpt: After seven straight days of rain, the clouds finally opened, and the city exhaled. The ground at Monza was still soaked—puddles everywhere, reflections trembling with each passing step—but people gathered anyway. No storm could dilute the
 coverImageUrl: https://px-web-images-v2.pixpa.com/oD4_Dz1RlruJZCH1FlUe6X1T4vqHalOdaUEOYJU23yQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE5MTQxNzMtMDAwLW1hc3NpdmUtMDAyLmpwZw==
 sourcePageUrl: https://www.jeremy.gallery/blog/iveco-massif-at-monza
-tags: Imported, Website
+tags: photohgraphy, cars, iveco
 isPublished: false
 isFeatured: false
 readingMinutes: 2

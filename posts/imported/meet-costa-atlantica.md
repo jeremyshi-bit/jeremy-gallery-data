@@ -8,7 +8,7 @@ language: en
 excerpt: Morning light drifted across the harbor as a massive cruise ship—Costa Atlantica—slowly came into view. Its hull towered over the pier, a floating city pausing for breath on its long, inter-continental journey.
 coverImageUrl: https://px-web-images-v2.pixpa.com/VSoBxxoNSKXJCRYXvXM1DVJrmVZn2JScaoOGSgsh7-U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NTA5MDMtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMS5qcGc=
 sourcePageUrl: https://www.jeremy.gallery/blog/meet-costa-atlantica
-tags: Imported, Website
+tags: photohgraphy, ship
 isPublished: false
 isFeatured: false
 readingMinutes: 2

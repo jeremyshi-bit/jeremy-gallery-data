@@ -8,7 +8,7 @@ language: en
 excerpt: A six-year-old ginger cat. Forty-three pounds. A heavyweight with a soft stare, living with a designer friend of mine—an unlikely roommate, yet perfectly matched.
 coverImageUrl: https://px-web-images-v2.pixpa.com/8ec4SU6WBSRJNivoPwcJ233Oz7FwyVX6oF80ocDIu3A/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NDAzMTAtMDAwLWRlc2lnbmVyLWNhdC0wMDMuanBn
 sourcePageUrl: https://www.jeremy.gallery/blog/gingercat
-tags: Imported, Website
+tags: photohgraphy, cat
 isPublished: false
 isFeatured: false
 readingMinutes: 2

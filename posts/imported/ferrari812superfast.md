@@ -8,7 +8,7 @@ language: en
 excerpt: When I first began photographing cars, one lesson revealed itself almost immediately:
 coverImageUrl: https://px-web-images-v2.pixpa.com/dYPALdO5qymANyUrkn5xMRh-bnJYOKtYP2ZLao-oA_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE4MjgyODAtMDAwLTgxMi1zdXBlci0wMDUuanBn
 sourcePageUrl: https://www.jeremy.gallery/blog/ferrari812superfast
-tags: Imported, Website
+tags: photohgraphy, cars, Ferrari
 isPublished: false
 isFeatured: false
 readingMinutes: 2

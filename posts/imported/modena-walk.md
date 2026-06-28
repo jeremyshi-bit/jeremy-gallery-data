@@ -8,7 +8,7 @@ language: en
 excerpt: It was a warm Friday afternoon when curiosity pulled me toward the Motor Valley Fest.
 coverImageUrl: https://px-web-images-v2.pixpa.com/jA4vI7b14hASNUx9Eb0H0mRlDTvWooHNjybrTLw_m_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODMwMjM4MzItMDA1LWItbW9kZW5hLTAwMS5qcGc=
 sourcePageUrl: https://www.jeremy.gallery/blog/modena-walk
-tags: Imported, Website
+tags: photohgraphy, Italy
 isPublished: false
 isFeatured: false
 readingMinutes: 2

@@ -8,7 +8,7 @@ language: en
 excerpt: Amsterdam Airport—Schiphol—carries a name shaped by legends and old maritime stories, all somehow drifting back to ships. That history has always fascinated me.
 coverImageUrl: https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==
 sourcePageUrl: https://www.jeremy.gallery/blog/amsterdam-airport
-tags: Imported, Website
+tags: photohgraphy, Airport
 isPublished: false
 isFeatured: false
 readingMinutes: 2
