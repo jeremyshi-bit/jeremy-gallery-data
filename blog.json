@@ -20,6 +20,26 @@
       "isFeatured": true,
       "readingMinutes": 3,
       "contentUrl": "posts/remote-blog-json-test.md"
+    },
+    {
+      "id": "second-blog-test",
+      "title": "Second Blog Test",
+      "date": "2026-06-29",
+      "excerpt": "This is the second Markdown blog post used to verify the automatic blog.json generation workflow.",
+      "updatedAt": "2026-06-29",
+      "author": "Jeremy",
+      "language": "en",
+      "coverImageUrl": "https://picsum.photos/seed/second-blog-test/1200/800",
+      "sourcePageUrl": "https://www.jeremy.gallery",
+      "tags": [
+        "Test",
+        "Workflow",
+        "Markdown"
+      ],
+      "isPublished": true,
+      "isFeatured": false,
+      "readingMinutes": 2,
+      "contentUrl": "posts/second-blog-test.md"
     }
   ]
 }
