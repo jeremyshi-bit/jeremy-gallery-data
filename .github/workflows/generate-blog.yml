@@ -1,0 +1,34 @@
+name: Generate Blog JSON
+
+on:
+  push:
+    paths:
+      - "posts/**/*.md"
+      - "scripts/generate_blog.py"
+      - ".github/workflows/generate-blog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-blog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate blog.json
+        run: python scripts/generate_blog.py
+
+      - name: Commit generated blog.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generate blog.json"
+          file_pattern: blog.json
