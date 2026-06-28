@@ -1,259 +1,45 @@
 {
   "version": 1,
-  "generatedFrom": "posts/imported",
-  "postCount": 12,
   "posts": [
     {
-      "id": "amsterdam-airport",
-      "title": "Jeremy Gallery - AMS",
-      "date": "2019-11-18",
-      "updatedAt": "2019-11-18",
+      "id": "remote-blog-json-test",
+      "title": "Remote Blog JSON Test",
+      "date": "2026-06-28",
+      "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages.",
+      "updatedAt": "2026-06-28",
       "author": "Jeremy",
       "language": "en",
-      "excerpt": "Amsterdam Airport—Schiphol—carries a name shaped by legends and old maritime stories, all somehow drifting back to ships. That history has always fascinated me.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/amsterdam-airport",
-      "contentPath": "posts/imported/amsterdam-airport.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/amsterdam-airport.md",
-      "imageCount": 4,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
+      "coverImageUrl": "https://picsum.photos/seed/jeremy-blog-json-test/1200/800",
+      "sourcePageUrl": "https://www.jeremy.gallery",
       "tags": [
-        "Imported",
-        "Website"
-      ]
+        "Test",
+        "Blog",
+        "JSON"
+      ],
+      "isPublished": true,
+      "isFeatured": true,
+      "readingMinutes": 3,
+      "contentUrl": "posts/remote-blog-json-test.md"
     },
     {
-      "id": "modena-walk",
-      "title": "Jeremy Gallery - Modena Walk",
-      "date": "2019-09-13",
-      "updatedAt": "2019-09-13",
+      "id": "second-blog-test",
+      "title": "Second Blog Test",
+      "date": "2026-06-29",
+      "excerpt": "This is the second Markdown blog post used to verify the automatic blog.json generation workflow.",
+      "updatedAt": "2026-06-29",
       "author": "Jeremy",
       "language": "en",
-      "excerpt": "It was a warm Friday afternoon when curiosity pulled me toward the Motor Valley Fest.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/jA4vI7b14hASNUx9Eb0H0mRlDTvWooHNjybrTLw_m_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODMwMjM4MzItMDA1LWItbW9kZW5hLTAwMS5qcGc=",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/modena-walk",
-      "contentPath": "posts/imported/modena-walk.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/modena-walk.md",
-      "imageCount": 6,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
+      "coverImageUrl": "https://picsum.photos/seed/second-blog-test/1200/800",
+      "sourcePageUrl": "https://www.jeremy.gallery",
       "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "ferrari812superfast",
-      "title": "Jeremy Gallery - Ferrari 812 Superfast",
-      "date": "2019-06-10",
-      "updatedAt": "2019-06-10",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "When I first began photographing cars, one lesson revealed itself almost immediately:",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/dYPALdO5qymANyUrkn5xMRh-bnJYOKtYP2ZLao-oA_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE4MjgyODAtMDAwLTgxMi1zdXBlci0wMDUuanBn",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/ferrari812superfast",
-      "contentPath": "posts/imported/ferrari812superfast.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/ferrari812superfast.md",
-      "imageCount": 4,
-      "readingMinutes": 2,
-      "isPublished": false,
+        "Test",
+        "Workflow",
+        "Markdown"
+      ],
+      "isPublished": true,
       "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "iveco-massif-at-monza",
-      "title": "Jeremy Gallery - Iveco Massif",
-      "date": "2018-11-03",
-      "updatedAt": "2018-11-03",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "After seven straight days of rain, the clouds finally opened, and the city exhaled. The ground at Monza was still soaked—puddles everywhere, reflections trembling with each passing step—but people gathered anyway. No storm could dilute the",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/oD4_Dz1RlruJZCH1FlUe6X1T4vqHalOdaUEOYJU23yQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE5MTQxNzMtMDAwLW1hc3NpdmUtMDAyLmpwZw==",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/iveco-massif-at-monza",
-      "contentPath": "posts/imported/iveco-massif-at-monza.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/iveco-massif-at-monza.md",
-      "imageCount": 2,
       "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "gingercat",
-      "title": "Jeremy Gallery - Designer's Cat",
-      "date": "2018-07-29",
-      "updatedAt": "2018-07-29",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "A six-year-old ginger cat. Forty-three pounds. A heavyweight with a soft stare, living with a designer friend of mine—an unlikely roommate, yet perfectly matched.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/8ec4SU6WBSRJNivoPwcJ233Oz7FwyVX6oF80ocDIu3A/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NDAzMTAtMDAwLWRlc2lnbmVyLWNhdC0wMDMuanBn",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/gingercat",
-      "contentPath": "posts/imported/gingercat.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/gingercat.md",
-      "imageCount": 4,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "fiat500",
-      "title": "Jeremy Gallery - Fiat 500",
-      "date": "2018-06-21",
-      "updatedAt": "2018-06-21",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "Sunlight was slipping toward evening, turning the town into a soft amber glow. In a small courtyard near the center, a yellow Fiat 500 rested quietly—bright, nostalgic, almost cinematic on its own.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/oZ5s794DAIJd5aaYp-gsQTWbm5E9toy72D4eTIlnx-Y/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODM0NjU3MjktMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/fiat500",
-      "contentPath": "posts/imported/fiat500.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/fiat500.md",
-      "imageCount": 3,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "springflowers",
-      "title": "Jeremy Gallery - Spring Flowers",
-      "date": "2018-03-02",
-      "updatedAt": "2018-03-02",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "Is an APS-C 135mm enough to photograph sakura in the park?",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/n5BZlMS9rP77rDKX8tUCfA_Q36OoqXcHR7T13zpVruQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NTc2NDUtMDAwLXNwcmluZy1mbG93ZXItMDA0LmpwZw==",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/springflowers",
-      "contentPath": "posts/imported/springflowers.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/springflowers.md",
-      "imageCount": 4,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "singapore",
-      "title": "A Night Walk in Singapore",
-      "date": "2017-08-19",
-      "updatedAt": "2017-08-19",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "Landed at Changi Airport in a wet rainy summer evening.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/Fr9NAhaReVOnamwVKATUSJ_Dszx8rnmkV4sVY5TMGV4/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE3MTMxMDUyOTktMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwNi5qcGc=",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/singapore",
-      "contentPath": "posts/imported/singapore.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/singapore.md",
-      "imageCount": 6,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "untitled-post",
-      "title": "Jeremy Gallery",
-      "date": "2017-08-19",
-      "updatedAt": "2017-08-19",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "Landed at Changi Airport in a wet rainy summer evening.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/Fr9NAhaReVOnamwVKATUSJ_Dszx8rnmkV4sVY5TMGV4/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE3MTMxMDUyOTktMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwNi5qcGc=",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/untitled-post",
-      "contentPath": "posts/imported/untitled-post.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/untitled-post.md",
-      "imageCount": 6,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "bologna-airport",
-      "title": "Jeremy Gallery - Bologna Airport",
-      "date": "2017-07-30",
-      "updatedAt": "2017-07-30",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "Bologna Guglielmo Marconi Airport—named after the man who sent the first telegraph across the world.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/TlFcbrowN25RZ9anIJfmYgZMaI54rk1qo4EMR1j1oSY/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI4MjEwNzQtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMi5qcGc=",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/bologna-airport",
-      "contentPath": "posts/imported/bologna-airport.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/bologna-airport.md",
-      "imageCount": 2,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "volvov40",
-      "title": "Jeremy Gallery - Volvo V40",
-      "date": "2017-06-03",
-      "updatedAt": "2017-06-03",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "A shape that feels like the natural successor to the C30—sporty, compact, and quietly confident. The hatchback proportions are beautiful, the stance low, and the 200-horsepower engine gives it a strength you don’t expect from something this",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/HSn86T5i2Y-LFiDWEaiEvpKdm54wpLP8wuAOJ6R6sBc/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2MzA3OTYtMDAwLXZvbHZvLXY0MC0wMDIuanBn",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/volvov40",
-      "contentPath": "posts/imported/volvov40.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/volvov40.md",
-      "imageCount": 4,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
-    },
-    {
-      "id": "meet-costa-atlantica",
-      "title": "Jeremy Gallery - Costa Atlantica",
-      "date": "2016-11-14",
-      "updatedAt": "2016-11-14",
-      "author": "Jeremy",
-      "language": "en",
-      "excerpt": "Morning light drifted across the harbor as a massive cruise ship—Costa Atlantica—slowly came into view. Its hull towered over the pier, a floating city pausing for breath on its long, inter-continental journey.",
-      "coverImageUrl": "https://px-web-images-v2.pixpa.com/VSoBxxoNSKXJCRYXvXM1DVJrmVZn2JScaoOGSgsh7-U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NTA5MDMtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMS5qcGc=",
-      "sourcePageUrl": "https://www.jeremy.gallery/blog/meet-costa-atlantica",
-      "contentPath": "posts/imported/meet-costa-atlantica.md",
-      "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/imported/meet-costa-atlantica.md",
-      "imageCount": 3,
-      "readingMinutes": 2,
-      "isPublished": false,
-      "isFeatured": false,
-      "tags": [
-        "Imported",
-        "Website"
-      ]
+      "contentUrl": "posts/second-blog-test.md"
     }
   ]
 }
