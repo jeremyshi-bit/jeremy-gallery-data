@@ -506,6 +506,12 @@ def main():
     if not urls:
         raise ValueError("No blog URLs found.")
 
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    for old_file in OUTPUT_DIR.glob("*.md"):
+        old_file.unlink()
+        print(f"Removed old draft: {old_file.relative_to(REPO_ROOT)}")
+
     for url in urls:
         create_markdown_file(url)
 
