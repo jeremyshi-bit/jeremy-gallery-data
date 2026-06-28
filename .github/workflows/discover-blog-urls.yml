@@ -1,0 +1,29 @@
+name: Discover Blog URLs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  discover-blog-urls:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Discover blog URLs
+        run: python scripts/discover_blog_urls.py
+
+      - name: Commit discovered URLs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update discovered blog URLs"
+          file_pattern: discovered_blog_urls.json
