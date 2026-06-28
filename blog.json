@@ -2,41 +2,24 @@
   "version": 1,
   "posts": [
     {
-      "id": "welcome-to-jeremy-gallery",
-      "title": "Welcome to Jeremy Gallery",
-      "date": "2026-06-28",
-      "excerpt": "A short introduction to the Jeremy Gallery mobile app experience.",
-      "content": "Welcome to Jeremy Gallery.\n\nThis mobile app is designed as a simple and focused way to browse photography collections, stories, and selected portfolio works.\n\nThe first version of the app focuses on Portfolio, including albums and photos loaded from a remote JSON file.\n\nBlog will become a place for short notes, photo stories, travel impressions, and updates."
-    },
-    {
-      "id": "milano-moments",
-      "title": "Milano Moments",
-      "date": "2026-06-21",
-      "excerpt": "Light, streets, architecture and quiet details from Milano.",
-      "content": "Milano is a city of structure, texture and small visual surprises.\n\nThe photographs in this collection focus less on landmarks and more on the feeling of walking through the city.\n\nDetails, shadows, reflections and quiet moments often become more memorable than the obvious views."
-    },
-    {
-      "id": "mobile-gallery-design",
-      "title": "Designing a Mobile Gallery",
-      "date": "2026-06-20",
-      "excerpt": "Thoughts behind building a clean mobile browsing experience for photography.",
-      "content": "A mobile gallery should feel calm and easy to navigate.\n\nThe goal is not to overload the screen, but to allow each image and each album to breathe.\n\nNavigation should be simple, visual hierarchy should be clear, and the user should always know where they are."
-    },
-    {
       "id": "remote-blog-json-test",
       "title": "Remote Blog JSON Test",
       "date": "2026-06-28",
-      "isPublished": true,
-      "isFeatured": true,
-      "readingMinutes": 3,
+      "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages.",
       "updatedAt": "2026-06-28",
       "author": "Jeremy",
       "language": "en",
       "coverImageUrl": "https://picsum.photos/seed/jeremy-blog-json-test/1200/800",
       "sourcePageUrl": "https://www.jeremy.gallery",
-      "tags": ["Test", "Blog", "JSON"],
-      "contentUrl": "posts/remote-blog-json-test.md",
-      "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages."
+      "tags": [
+        "Test",
+        "Blog",
+        "JSON"
+      ],
+      "isPublished": true,
+      "isFeatured": true,
+      "readingMinutes": 3,
+      "contentUrl": "posts/remote-blog-json-test.md"
     }
   ]
 }
