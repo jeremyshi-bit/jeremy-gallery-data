@@ -8,7 +8,7 @@ language: en
 excerpt: Bologna Guglielmo Marconi Airport—named after the man who sent the first telegraph across the world.
 coverImageUrl: https://px-web-images-v2.pixpa.com/TlFcbrowN25RZ9anIJfmYgZMaI54rk1qo4EMR1j1oSY/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI4MjEwNzQtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMi5qcGc=
 sourcePageUrl: https://www.jeremy.gallery/blog/bologna-airport
-tags: Imported, Website
+tags: 
 isPublished: false
 isFeatured: false
 readingMinutes: 2

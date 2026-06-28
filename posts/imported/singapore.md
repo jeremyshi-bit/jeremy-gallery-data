@@ -8,7 +8,7 @@ language: en
 excerpt: Landed at Changi Airport in a wet rainy summer evening.
 coverImageUrl: https://px-web-images-v2.pixpa.com/Fr9NAhaReVOnamwVKATUSJ_Dszx8rnmkV4sVY5TMGV4/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE3MTMxMDUyOTktMDA3OS0yMDE3LXNpbmdhcG9yZS1ibG9nLTAwNi5qcGc=
 sourcePageUrl: https://www.jeremy.gallery/blog/singapore
-tags: Imported, Website
+tags: 
 isPublished: false
 isFeatured: false
 readingMinutes: 2
