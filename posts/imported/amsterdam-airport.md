@@ -1,0 +1,94 @@
+---
+id: amsterdam-airport
+title: Jeremy Gallery - AMS
+date: 2019-11-18
+updatedAt: 2019-11-18
+author: Jeremy
+language: en
+excerpt: Amsterdam Airport—Schiphol—carries a name shaped by legends and old maritime stories, all somehow drifting back to ships. That history has always fascinated me.
+coverImageUrl: https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==
+sourcePageUrl: https://www.jeremy.gallery/blog/amsterdam-airport
+tags: Imported, Website
+isPublished: false
+isFeatured: false
+readingMinutes: 2
+---
+# Jeremy Gallery - AMS
+
+![Jeremy Gallery - AMS](https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==)
+
+Item
+
+BOOK A SESSION
+
+Item
+
+BOOK A SESSION
+
+Nov 18, 2019
+
+Amsterdam Airport
+
+Amsterdam Airport—Schiphol—carries a name shaped by legends and old maritime stories, all somehow drifting back to ships. That history has always fascinated me.
+
+I arrived in the middle of the night, descending through darkness toward the coastline of the Netherlands. Below the window, the landscape unfolded like a quiet constellation—harbors, roads, and fields glowing softly against the black. The aircraft slowed for landing, unusually smooth, giving me a surprisingly crisp frame at 1/30s, f/2.8, 30mm—a moment steadier than it had any reason to be.
+
+On the ground, the scale of the place revealed itself.
+
+Six runways. Over 220 gates. An airport that seems built to stay awake long after the world goes to sleep.
+
+Catering trucks pulled away, lights swept across the apron, and the last tasks of the night shift moved with practiced rhythm. Despite the hour, the airport felt alive—machines humming, doors sliding, distant voices echoing in the hangars.
+
+My flight was ready. Boarding was about to begin.
+
+A brief pause, a final look across the tarmac lit by cold sodium light—then it was time to leave for the next stop.
+
+Tags:
+
+photohgraphy
+
+Airport
+
+Share
+
+http://www.jeremy.gallery/blog/amsterdam-airport
+
+Copied
+
+Next Post
+
+Latest Posts
+
+Amsterdam Airport
+
+Nov 18, 2019
+
+Modena Walk
+
+Sep 13, 2019
+
+Ferrari 812 Superfast
+
+Jun 10, 2019
+
+Follow me
+
+Nov 18, 2019
+
+Amsterdam Airport
+
+Sep 13, 2019
+
+Modena Walk
+
+Jun 10, 2019
+
+Ferrari 812 Superfast
+
+Please enable JavaScript to view the
+
+Share
+
+http://www.jeremy.gallery/blog/amsterdam-airport
+
+Copied
