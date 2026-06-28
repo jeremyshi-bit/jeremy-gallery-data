@@ -1,0 +1,38 @@
+name: Generate Blog JSON
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-blog-json:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate blog.json
+        run: |
+          python scripts/generate_blog_json.py
+
+      - name: Commit generated blog.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add blog.json
+
+          if git diff --cached --quiet; then
+            echo "No blog.json changes to commit."
+          else
+            git commit -m "Generate blog JSON"
+            git push
+          fi
