@@ -1,4 +1,4 @@
-name: Generate Blog JSON
+name: Generate Blog Data Legacy
 
 on:
   push:
