@@ -1,0 +1,95 @@
+name: Check Blog Images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-blog-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install beautifulsoup4
+
+      - name: Diagnose amsterdam-airport images
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import urllib.request
+          from urllib.parse import urljoin
+          from bs4 import BeautifulSoup
+
+          md_path = Path("posts/imported/amsterdam-airport.md")
+
+          if not md_path.exists():
+              raise SystemExit("File not found: posts/imported/amsterdam-airport.md")
+
+          md = md_path.read_text(encoding="utf-8")
+
+          m = re.search(r'^source_url:\s*["\']?([^"\']+)["\']?', md, re.M)
+          if not m:
+              raise SystemExit("No source_url found in markdown front matter.")
+
+          url = m.group(1).strip()
+          print("Source URL:", url)
+
+          req = urllib.request.Request(
+              url,
+              headers={"User-Agent": "Mozilla/5.0"}
+          )
+
+          html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
+          soup = BeautifulSoup(html, "html.parser")
+
+          print("HTML length:", len(html))
+
+          imgs = []
+
+          for img in soup.find_all("img"):
+              item = {}
+              for attr in [
+                  "src",
+                  "data-src",
+                  "data-original",
+                  "data-lazy-src",
+                  "data-ll-src",
+                  "srcset",
+                  "data-srcset",
+                  "alt",
+                  "title",
+              ]:
+                  value = img.get(attr)
+                  if value:
+                      item[attr] = value
+
+              if "src" in item:
+                  item["absolute_src"] = urljoin(url, item["src"])
+
+              if item:
+                  imgs.append(item)
+
+          print("IMG tag count:", len(imgs))
+
+          for i, item in enumerate(imgs, 1):
+              print(f"\n[{i}]")
+              for k, v in item.items():
+                  print(f"{k}: {str(v)[:300]}")
+
+          print("\nMarkdown image count:")
+          print(md.count("!["))
+
+          print("\nMarkdown image lines:")
+          for line_no, line in enumerate(md.splitlines(), 1):
+              if "![" in line:
+                  print(f"{line_no}: {line[:300]}")
+          PY
