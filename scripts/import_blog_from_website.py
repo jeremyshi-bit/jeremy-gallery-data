@@ -397,7 +397,7 @@ def format_tags(tags: list[str]) -> str:
     if tags:
         return ", ".join(tags)
 
-    return "Imported, Website"
+    return ""
 
 
 def clean_body_lines(lines, title):
