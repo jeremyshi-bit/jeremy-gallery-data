@@ -33,8 +33,7 @@
       "sourcePageUrl": "https://www.jeremy.gallery",
       "tags": ["Test", "Blog", "JSON"],
       "contentUrl": "https://jeremyshi-bit.github.io/jeremy-gallery-data/posts/remote-blog-json-test.md",
-      "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages.",
-      "content": "This is a test post from the remote blog.json file.\n\nIf this article appears in the app, it means the Blog page is successfully loading content from GitHub Pages instead of only using local sample data.\n\nThis version also includes optional Blog metadata, including author, tags, cover image URL, source page URL and updated date."
+      "excerpt": "This post confirms that the app is loading Blog content from GitHub Pages."
     }
   ]
 }
