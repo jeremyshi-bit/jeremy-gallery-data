@@ -1,8 +1,9 @@
+import base64
 import json
 import re
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, unquote
 from urllib.request import Request, urlopen
 from datetime import datetime, timezone
 
@@ -39,10 +40,25 @@ class BlogPageParser(HTMLParser):
                 self.meta[key.lower()] = content.strip()
 
         if tag == "img":
-            src = attrs_dict.get("src") or attrs_dict.get("data-src")
+            image = {}
 
-            if src:
-                self.images.append(src)
+            for attr in [
+                "src",
+                "data-src",
+                "data-original",
+                "data-lazy-src",
+                "srcset",
+                "data-srcset",
+                "alt",
+                "title",
+            ]:
+                value = attrs_dict.get(attr)
+
+                if value:
+                    image[attr] = value.strip()
+
+            if image:
+                self.images.append(image)
 
     def handle_endtag(self, tag):
         tag = tag.lower()
@@ -138,19 +154,166 @@ def extract_excerpt(parser: BlogPageParser) -> str:
     return "Imported from Jeremy Gallery."
 
 
+def first_url_from_srcset(value: str) -> str:
+    if not value:
+        return ""
+
+    parts = [part.strip() for part in value.split(",") if part.strip()]
+
+    if not parts:
+        return ""
+
+    # Usually the last srcset item is the largest image.
+    return parts[-1].split()[0].strip()
+
+
+def image_url_from_item(item: dict, page_url: str) -> str:
+    for attr in [
+        "src",
+        "data-src",
+        "data-original",
+        "data-lazy-src",
+    ]:
+        value = item.get(attr)
+
+        if value:
+            return urljoin(page_url, value)
+
+    for attr in [
+        "srcset",
+        "data-srcset",
+    ]:
+        value = item.get(attr)
+        candidate = first_url_from_srcset(value)
+
+        if candidate:
+            return urljoin(page_url, candidate)
+
+    return ""
+
+
+def decode_pixpa_original_key(image_url: str) -> str:
+    """
+    Pixpa image URLs usually end with a base64-like encoded original file path.
+    Decoding it lets us identify the original filename, for example:
+    amsterdam-airport-001.jpg
+    This helps remove duplicates and exclude Latest Posts images.
+    """
+    try:
+        path = urlparse(image_url).path.rstrip("/")
+        encoded = unquote(path.split("/")[-1])
+
+        if not encoded:
+            return image_url.lower()
+
+        padded = encoded + "=" * ((4 - len(encoded) % 4) % 4)
+        decoded = base64.urlsafe_b64decode(padded.encode("utf-8")).decode(
+            "utf-8",
+            errors="ignore",
+        )
+
+        if decoded:
+            return decoded.lower()
+
+    except Exception:
+        pass
+
+    return image_url.lower()
+
+
+def extract_page_images(parser: BlogPageParser, page_url: str) -> list[str]:
+    images = []
+    seen_keys = set()
+
+    for item in parser.images:
+        image_url = image_url_from_item(item, page_url)
+
+        if not image_url:
+            continue
+
+        key = decode_pixpa_original_key(image_url)
+
+        if key in seen_keys:
+            continue
+
+        seen_keys.add(key)
+        images.append(image_url)
+
+    return images
+
+
 def extract_cover_image(parser: BlogPageParser, page_url: str) -> str:
     candidates = [
         parser.meta.get("og:image"),
         parser.meta.get("twitter:image"),
     ]
 
-    candidates.extend(parser.images)
+    candidates.extend(extract_page_images(parser, page_url))
 
     for candidate in candidates:
         if candidate:
             return urljoin(page_url, candidate)
 
     return ""
+
+
+def image_matches_current_post(image_url: str, slug: str, title: str) -> bool:
+    key = decode_pixpa_original_key(image_url)
+    slug_lower = slug.lower()
+
+    if slug_lower and slug_lower in key:
+        return True
+
+    slug_tokens = [
+        token for token in slug_lower.split("-")
+        if len(token) >= 3
+    ]
+
+    if slug_tokens and all(token in key for token in slug_tokens):
+        return True
+
+    title_tokens = [
+        token.lower()
+        for token in re.findall(r"[a-zA-Z0-9]+", title)
+        if len(token) >= 3
+    ]
+
+    if title_tokens and all(token in key for token in title_tokens):
+        return True
+
+    return False
+
+
+def extract_body_images(
+    parser: BlogPageParser,
+    page_url: str,
+    slug: str,
+    title: str,
+    cover_image_url: str,
+) -> list[str]:
+    all_images = extract_page_images(parser, page_url)
+    body_images = []
+
+    cover_key = decode_pixpa_original_key(cover_image_url) if cover_image_url else ""
+
+    for image_url in all_images:
+        image_key = decode_pixpa_original_key(image_url)
+
+        if not image_matches_current_post(image_url, slug, title):
+            # On Pixpa blog pages, unrelated images after the article are usually
+            # Latest Posts / Next Post. Once we have collected article images,
+            # stop at the first unrelated image.
+            if body_images:
+                break
+
+            continue
+
+        if cover_key and image_key == cover_key:
+            continue
+
+        body_images.append(image_url)
+
+    return body_images
 
 
 def extract_date(parser: BlogPageParser) -> str:
@@ -179,6 +342,16 @@ def clean_body_lines(lines, title):
         "portfolio",
         "contact",
         "jeremy gallery",
+        "item",
+        "book a session",
+        "copied",
+    }
+
+    stop_lines = {
+        "tags:",
+        "next post",
+        "latest posts",
+        "follow me",
     }
 
     cleaned_lines = []
@@ -192,10 +365,19 @@ def clean_body_lines(lines, title):
         if not line:
             continue
 
+        if lower in stop_lines:
+            break
+
+        if lower.startswith("please enable javascript"):
+            break
+
         if lower in skip_lines:
             continue
 
         if lower == title_lower:
+            continue
+
+        if lower.startswith("http://") or lower.startswith("https://"):
             continue
 
         if "powered by" in lower:
@@ -213,7 +395,7 @@ def clean_body_lines(lines, title):
     return cleaned_lines
 
 
-def build_markdown_body(title, body_lines, cover_image_url):
+def build_markdown_body(title, body_lines, cover_image_url, body_image_urls):
     lines = [f"# {title}", ""]
 
     if cover_image_url:
@@ -227,6 +409,14 @@ def build_markdown_body(title, body_lines, cover_image_url):
     else:
         lines.append("Imported from Jeremy Gallery.")
         lines.append("")
+
+    if body_image_urls:
+        lines.append("## Photos")
+        lines.append("")
+
+        for index, image_url in enumerate(body_image_urls, start=1):
+            lines.append(f"![{title} photo {index}]({image_url})")
+            lines.append("")
 
     return "\n".join(lines).strip() + "\n"
 
@@ -247,6 +437,13 @@ def create_markdown_file(url: str):
     cover_image_url = extract_cover_image(parser, url)
     date = extract_date(parser)
     body_lines = clean_body_lines(parser.text_lines, title)
+    body_image_urls = extract_body_images(
+        parser=parser,
+        page_url=url,
+        slug=slug,
+        title=title,
+        cover_image_url=cover_image_url,
+    )
 
     front_matter = [
         "---",
@@ -278,6 +475,7 @@ def create_markdown_file(url: str):
         title=title,
         body_lines=body_lines,
         cover_image_url=cover_image_url,
+        body_image_urls=body_image_urls,
     )
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -288,7 +486,11 @@ def create_markdown_file(url: str):
         encoding="utf-8"
     )
 
-    print(f"Imported draft: {output_path.relative_to(REPO_ROOT)}")
+    print(
+        f"Imported draft: {output_path.relative_to(REPO_ROOT)} "
+        f"with {1 if cover_image_url else 0} cover image "
+        f"and {len(body_image_urls)} body images"
+    )
 
 
 def main():
