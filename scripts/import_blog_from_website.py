@@ -257,31 +257,40 @@ def extract_cover_image(parser: BlogPageParser, page_url: str) -> str:
     return ""
 
 
-def image_matches_current_post(image_url: str, slug: str, title: str) -> bool:
-    key = decode_pixpa_original_key(image_url)
-    slug_lower = slug.lower()
+def has_latest_posts_tail(image_urls: list[str]) -> bool:
+    """
+    Pixpa blog pages currently append the same Latest Posts image block
+    at the end of each blog page:
+    - amsterdam-airport-002
+    - modena-001
+    - 812-super-005
 
-    if slug_lower and slug_lower in key:
-        return True
+    These are navigation/recommendation images, not article body images.
+    """
+    if len(image_urls) < 4:
+        return False
 
-    slug_tokens = [
-        token for token in slug_lower.split("-")
-        if len(token) >= 3
+    tail_keys = [
+        decode_pixpa_original_key(image_url)
+        for image_url in image_urls[-3:]
     ]
 
-    if slug_tokens and all(token in key for token in slug_tokens):
-        return True
+    tail_text = "\n".join(tail_keys)
 
-    title_tokens = [
-        token.lower()
-        for token in re.findall(r"[a-zA-Z0-9]+", title)
-        if len(token) >= 3
-    ]
+    return (
+        "amsterdam-airport-002" in tail_text
+        and "modena-001" in tail_text
+        and "812-super-005" in tail_text
+    )
 
-    if title_tokens and all(token in key for token in title_tokens):
-        return True
 
-    return False
+def extract_article_images(parser: BlogPageParser, page_url: str) -> list[str]:
+    all_images = extract_page_images(parser, page_url)
+
+    if has_latest_posts_tail(all_images):
+        return all_images[:-3]
+
+    return all_images
 
 
 def extract_body_images(
@@ -291,22 +300,13 @@ def extract_body_images(
     title: str,
     cover_image_url: str,
 ) -> list[str]:
-    all_images = extract_page_images(parser, page_url)
+    article_images = extract_article_images(parser, page_url)
     body_images = []
 
     cover_key = decode_pixpa_original_key(cover_image_url) if cover_image_url else ""
 
-    for image_url in all_images:
+    for image_url in article_images:
         image_key = decode_pixpa_original_key(image_url)
-
-        if not image_matches_current_post(image_url, slug, title):
-            # On Pixpa blog pages, unrelated images after the article are usually
-            # Latest Posts / Next Post. Once we have collected article images,
-            # stop at the first unrelated image.
-            if body_images:
-                break
-
-            continue
 
         if cover_key and image_key == cover_key:
             continue
@@ -348,11 +348,12 @@ def clean_body_lines(lines, title):
     }
 
     stop_lines = {
-        "tags:",
-        "next post",
-        "latest posts",
-        "follow me",
-    }
+    "tags:",
+    "share",
+    "next post",
+    "latest posts",
+    "follow me",
+}
 
     cleaned_lines = []
     previous = None
