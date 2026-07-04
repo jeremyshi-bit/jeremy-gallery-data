@@ -1,6 +1,6 @@
 ---
 id: meet-costa-atlantica
-title: Jeremy Gallery - Costa Atlantica
+title: Costa Atlantica
 date: 2016-11-14
 updatedAt: 2016-11-14
 author: Jeremy
@@ -13,9 +13,9 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Costa Atlantica
+# Costa Atlantica
 
-![Jeremy Gallery - Costa Atlantica](https://px-web-images-v2.pixpa.com/VSoBxxoNSKXJCRYXvXM1DVJrmVZn2JScaoOGSgsh7-U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NTA5MDMtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMS5qcGc=)
+![Costa Atlantica](https://px-web-images-v2.pixpa.com/VSoBxxoNSKXJCRYXvXM1DVJrmVZn2JScaoOGSgsh7-U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NTA5MDMtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMS5qcGc=)
 
 Nov 14, 2016
 
@@ -31,6 +31,6 @@ A brief meeting with a traveler built for distance—caught between departure an
 
 ## Photos
 
-![Jeremy Gallery - Costa Atlantica photo 1](https://px-web-images1.pixpa.com/pD6KaKiwJoAVW-fUw7aOUVsYLfTmoYHakJXktGzZm8g/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTI2OS03ODgxMjgtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMi5qcGc=)
+![Costa Atlantica photo 1](https://px-web-images1.pixpa.com/pD6KaKiwJoAVW-fUw7aOUVsYLfTmoYHakJXktGzZm8g/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTI2OS03ODgxMjgtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMi5qcGc=)
 
-![Jeremy Gallery - Costa Atlantica photo 2](https://px-web-images3.pixpa.com/2wTINr0Ch1MMhRQ0BOlXtXRPKAFa4HjbwZW1n0oQAgw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTY4OS0zNjc1ODAtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMy5qcGc=)
+![Costa Atlantica photo 2](https://px-web-images3.pixpa.com/2wTINr0Ch1MMhRQ0BOlXtXRPKAFa4HjbwZW1n0oQAgw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTY4OS0zNjc1ODAtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMy5qcGc=)

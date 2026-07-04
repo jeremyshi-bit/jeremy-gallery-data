@@ -1,6 +1,6 @@
 ---
 id: gingercat
-title: Jeremy Gallery - Designer's Cat
+title: Designer's Cat
 date: 2018-07-29
 updatedAt: 2018-07-29
 author: Jeremy
@@ -13,13 +13,11 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Designer's Cat
+# Designer's Cat
 
-![Jeremy Gallery - Designer's Cat](https://px-web-images-v2.pixpa.com/8ec4SU6WBSRJNivoPwcJ233Oz7FwyVX6oF80ocDIu3A/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NDAzMTAtMDAwLWRlc2lnbmVyLWNhdC0wMDMuanBn)
+![Designer's Cat](https://px-web-images-v2.pixpa.com/8ec4SU6WBSRJNivoPwcJ233Oz7FwyVX6oF80ocDIu3A/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2NDAzMTAtMDAwLWRlc2lnbmVyLWNhdC0wMDMuanBn)
 
 Jul 29, 2018
-
-Designer's Cat
 
 A six-year-old ginger cat. Forty-three pounds. A heavyweight with a soft stare, living with a designer friend of mine—an unlikely roommate, yet perfectly matched.
 
@@ -41,8 +39,8 @@ If you asked him to describe his world, it would sound something like this:
 
 ## Photos
 
-![Jeremy Gallery - Designer's Cat photo 1](https://px-web-images5.pixpa.com/3WxTzb9hdi-_a__NFiAoqYp_Nnaxn87kuKJAE9kn9Mk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDQyNC0xNzY5OTMtMDAwLWRlc2lnbmVyLWNhdC0wMDEuanBn)
+![Designer's Cat photo 1](https://px-web-images5.pixpa.com/3WxTzb9hdi-_a__NFiAoqYp_Nnaxn87kuKJAE9kn9Mk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDQyNC0xNzY5OTMtMDAwLWRlc2lnbmVyLWNhdC0wMDEuanBn)
 
-![Jeremy Gallery - Designer's Cat photo 2](https://px-web-images2.pixpa.com/58yjC0e9uZyvKww2LIpbGXE4G6y3wF3B1IqdPCv6jd0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDYwNC02ODgzNzItMDAwLWRlc2lnbmVyLWNhdC0wMDQuanBn)
+![Designer's Cat photo 2](https://px-web-images2.pixpa.com/58yjC0e9uZyvKww2LIpbGXE4G6y3wF3B1IqdPCv6jd0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDYwNC02ODgzNzItMDAwLWRlc2lnbmVyLWNhdC0wMDQuanBn)
 
-![Jeremy Gallery - Designer's Cat photo 3](https://px-web-images4.pixpa.com/dAhTCE3W_zrxc-pbWvskpRroQvvduY0wjMLOHJjmhMY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDgyMC0yODU4Ni0wMDAtZGVzaWduZXItY2F0LTAwMi5qcGc=)
+![Designer's Cat photo 3](https://px-web-images4.pixpa.com/dAhTCE3W_zrxc-pbWvskpRroQvvduY0wjMLOHJjmhMY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDgyMC0yODU4Ni0wMDAtZGVzaWduZXItY2F0LTAwMi5qcGc=)

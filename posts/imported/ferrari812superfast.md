@@ -1,6 +1,6 @@
 ---
 id: ferrari812superfast
-title: Jeremy Gallery - Ferrari 812 Superfast
+title: Ferrari 812 Superfast
 date: 2019-06-10
 updatedAt: 2019-06-10
 author: Jeremy
@@ -13,13 +13,11 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Ferrari 812 Superfast
+# Ferrari 812 Superfast
 
-![Jeremy Gallery - Ferrari 812 Superfast](https://px-web-images-v2.pixpa.com/dYPALdO5qymANyUrkn5xMRh-bnJYOKtYP2ZLao-oA_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE4MjgyODAtMDAwLTgxMi1zdXBlci0wMDUuanBn)
+![Ferrari 812 Superfast](https://px-web-images-v2.pixpa.com/dYPALdO5qymANyUrkn5xMRh-bnJYOKtYP2ZLao-oA_U/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE4MjgyODAtMDAwLTgxMi1zdXBlci0wMDUuanBn)
 
 Jun 10, 2019
-
-Ferrari 812 Superfast
 
 When I first began photographing cars, one lesson revealed itself almost immediately:
 
@@ -39,8 +37,8 @@ Because some cars invite you to linger, and the 812 Superfast—with its presenc
 
 ## Photos
 
-![Jeremy Gallery - Ferrari 812 Superfast photo 1](https://px-web-images8.pixpa.com/KOEdSKdAFYyB5adS0PI3oVDQfBzcroNGll0CEJw5aFY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzU2OC05NzQ0ODctMDAwLTgxMi1zdXBlci0wMDEuanBn)
+![Ferrari 812 Superfast photo 1](https://px-web-images8.pixpa.com/KOEdSKdAFYyB5adS0PI3oVDQfBzcroNGll0CEJw5aFY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzU2OC05NzQ0ODctMDAwLTgxMi1zdXBlci0wMDEuanBn)
 
-![Jeremy Gallery - Ferrari 812 Superfast photo 2](https://px-web-images3.pixpa.com/Kepio0ZhjMmbPdNWVfy-yK372fEqFHjj-rjn43uRj54/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzg5NC03NDc5MzUtMDAwLTgxMi1zdXBlci0wMDMuanBn)
+![Ferrari 812 Superfast photo 2](https://px-web-images3.pixpa.com/Kepio0ZhjMmbPdNWVfy-yK372fEqFHjj-rjn43uRj54/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzg5NC03NDc5MzUtMDAwLTgxMi1zdXBlci0wMDMuanBn)
 
-![Jeremy Gallery - Ferrari 812 Superfast photo 3](https://px-web-images3.pixpa.com/MknXFmXhyhHVMLO9sy-5x0Y2UTKJECza_8qUdrY0524/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyODI0Ny01NzY4ODQtMDAwLTgxMi1zdXBlci0wMDIuanBn)
+![Ferrari 812 Superfast photo 3](https://px-web-images3.pixpa.com/MknXFmXhyhHVMLO9sy-5x0Y2UTKJECza_8qUdrY0524/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyODI0Ny01NzY4ODQtMDAwLTgxMi1zdXBlci0wMDIuanBn)

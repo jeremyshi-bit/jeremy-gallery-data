@@ -1,6 +1,6 @@
 ---
 id: iveco-massif-at-monza
-title: Jeremy Gallery - Iveco Massif
+title: Iveco Massif
 date: 2018-11-03
 updatedAt: 2018-11-03
 author: Jeremy
@@ -13,9 +13,9 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Iveco Massif
+# Iveco Massif
 
-![Jeremy Gallery - Iveco Massif](https://px-web-images-v2.pixpa.com/oD4_Dz1RlruJZCH1FlUe6X1T4vqHalOdaUEOYJU23yQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE5MTQxNzMtMDAwLW1hc3NpdmUtMDAyLmpwZw==)
+![Iveco Massif](https://px-web-images-v2.pixpa.com/oD4_Dz1RlruJZCH1FlUe6X1T4vqHalOdaUEOYJU23yQ/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE5MTQxNzMtMDAwLW1hc3NpdmUtMDAyLmpwZw==)
 
 Nov 03, 2018
 
@@ -37,4 +37,4 @@ Seeing it parked here at Monza, surrounded by water, engines, and winter air, fe
 
 ## Photos
 
-![Jeremy Gallery - Iveco Massif photo 1](https://px-web-images5.pixpa.com/iP2DHThSnFYh-8-MnxFND4OiFTGbTS_EfhAI4dxgi4w/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTkxNDg2NS0zMjI5MjQtMDAwLW1hc3NpdmUtMDAxLmpwZw==)
+![Iveco Massif photo 1](https://px-web-images5.pixpa.com/iP2DHThSnFYh-8-MnxFND4OiFTGbTS_EfhAI4dxgi4w/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTkxNDg2NS0zMjI5MjQtMDAwLW1hc3NpdmUtMDAxLmpwZw==)

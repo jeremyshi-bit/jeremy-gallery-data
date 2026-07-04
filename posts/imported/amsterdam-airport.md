@@ -1,6 +1,6 @@
 ---
 id: amsterdam-airport
-title: Jeremy Gallery - AMS
+title: Amsterdam Airport
 date: 2019-11-18
 updatedAt: 2019-11-18
 author: Jeremy
@@ -13,13 +13,11 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - AMS
+# Amsterdam Airport
 
-![Jeremy Gallery - AMS](https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==)
+![Amsterdam Airport](https://px-web-images-v2.pixpa.com/WWNx5csf3L0HUvDTzJWcEtXToAodhrxVsv0QW87uzYw/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI5NDI1MTEtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAyLmpwZw==)
 
 Nov 18, 2019
-
-Amsterdam Airport
 
 Amsterdam Airport—Schiphol—carries a name shaped by legends and old maritime stories, all somehow drifting back to ships. That history has always fascinated me.
 
@@ -37,8 +35,8 @@ A brief pause, a final look across the tarmac lit by cold sodium light—then it
 
 ## Photos
 
-![Jeremy Gallery - AMS photo 1](https://px-web-images5.pixpa.com/PkEUoA1iPhjFt86jzxH8AIQiP4-FMvtAyVzE0GAcoKw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0MzI2MC00NTE0NjYtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAxLmpwZw==)
+![Amsterdam Airport photo 1](https://px-web-images5.pixpa.com/PkEUoA1iPhjFt86jzxH8AIQiP4-FMvtAyVzE0GAcoKw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0MzI2MC00NTE0NjYtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAxLmpwZw==)
 
-![Jeremy Gallery - AMS photo 2](https://px-web-images2.pixpa.com/5m562gkLqWkkonUHwvVn_NetULdBpIw6kbTjUPCZNe4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDEyNi0yNjA5MDQtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAzLmpwZw==)
+![Amsterdam Airport photo 2](https://px-web-images2.pixpa.com/5m562gkLqWkkonUHwvVn_NetULdBpIw6kbTjUPCZNe4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDEyNi0yNjA5MDQtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAzLmpwZw==)
 
-![Jeremy Gallery - AMS photo 3](https://px-web-images5.pixpa.com/3O5gk1Ajgk0CBEiROsooHmYCiSjgbjwFp0572mtWTX4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDUyMS03NTQyOTUtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDA0LmpwZw==)
+![Amsterdam Airport photo 3](https://px-web-images5.pixpa.com/3O5gk1Ajgk0CBEiROsooHmYCiSjgbjwFp0572mtWTX4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDUyMS03NTQyOTUtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDA0LmpwZw==)

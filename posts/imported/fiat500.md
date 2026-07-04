@@ -1,6 +1,6 @@
 ---
 id: fiat500
-title: Jeremy Gallery - Fiat 500
+title: Fiat 500
 date: 2018-06-21
 updatedAt: 2018-06-21
 author: Jeremy
@@ -13,9 +13,9 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Fiat 500
+# Fiat 500
 
-![Jeremy Gallery - Fiat 500](https://px-web-images-v2.pixpa.com/oZ5s794DAIJd5aaYp-gsQTWbm5E9toy72D4eTIlnx-Y/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODM0NjU3MjktMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==)
+![Fiat 500](https://px-web-images-v2.pixpa.com/oZ5s794DAIJd5aaYp-gsQTWbm5E9toy72D4eTIlnx-Y/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODM0NjU3MjktMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==)
 
 Jun 21, 2018
 
@@ -43,6 +43,6 @@ And a yellow car becomes the backdrop to a moment that feels both fleeting and t
 
 ## Photos
 
-![Jeremy Gallery - Fiat 500 photo 1](https://px-web-images3.pixpa.com/zMr09xaIboXgXer_KkY0mssFuMLPPyL8jdBzfyQMngk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzQ2NzA0NS0xODIyMTEtMDA1LWItZmlhdC1hYmFydGgtMDAxLmpwZw==)
+![Fiat 500 photo 1](https://px-web-images3.pixpa.com/zMr09xaIboXgXer_KkY0mssFuMLPPyL8jdBzfyQMngk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzQ2NzA0NS0xODIyMTEtMDA1LWItZmlhdC1hYmFydGgtMDAxLmpwZw==)
 
-![Jeremy Gallery - Fiat 500 photo 2](https://px-web-images9.pixpa.com/slijL65umT56RRT26lrqJoMmiST4YeD6zaSxh82RS08/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzQ2NzExNy02NDY0NjMtMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==)
+![Fiat 500 photo 2](https://px-web-images9.pixpa.com/slijL65umT56RRT26lrqJoMmiST4YeD6zaSxh82RS08/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MzQ2NzExNy02NDY0NjMtMDA1LWItZmlhdC1hYmFydGgtMDAyLmpwZw==)

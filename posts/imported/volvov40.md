@@ -1,6 +1,6 @@
 ---
 id: volvov40
-title: Jeremy Gallery - Volvo V40
+title: Volvo V40
 date: 2017-06-03
 updatedAt: 2017-06-03
 author: Jeremy
@@ -13,9 +13,9 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Volvo V40
+# Volvo V40
 
-![Jeremy Gallery - Volvo V40](https://px-web-images-v2.pixpa.com/HSn86T5i2Y-LFiDWEaiEvpKdm54wpLP8wuAOJ6R6sBc/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2MzA3OTYtMDAwLXZvbHZvLXY0MC0wMDIuanBn)
+![Volvo V40](https://px-web-images-v2.pixpa.com/HSn86T5i2Y-LFiDWEaiEvpKdm54wpLP8wuAOJ6R6sBc/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODE2MzA3OTYtMDAwLXZvbHZvLXY0MC0wMDIuanBn)
 
 Jun 03, 2017
 
@@ -39,8 +39,8 @@ Small, stylish, practical, and full of character. A car you understand the momen
 
 ## Photos
 
-![Jeremy Gallery - Volvo V40 photo 1](https://px-web-images2.pixpa.com/mR8y2HMmqbcEiq84bIAt0N4RxWuNfz7QuT_X_zEQxRE/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTYzMTAxNC01Nzg2NjMtMDAwLXZvbHZvLXY0MC0wMDEuanBn)
+![Volvo V40 photo 1](https://px-web-images2.pixpa.com/mR8y2HMmqbcEiq84bIAt0N4RxWuNfz7QuT_X_zEQxRE/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTYzMTAxNC01Nzg2NjMtMDAwLXZvbHZvLXY0MC0wMDEuanBn)
 
-![Jeremy Gallery - Volvo V40 photo 2](https://px-web-images2.pixpa.com/6Ti-D34vufsG3KqOn6WNKmRFDN3II5sjx6qPJ3rSsD8/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTYzNDIwNi04NDk5MTAtMDAwLXZvbHZvLXY0MC0wMDEtMi5qcGc=)
+![Volvo V40 photo 2](https://px-web-images2.pixpa.com/6Ti-D34vufsG3KqOn6WNKmRFDN3II5sjx6qPJ3rSsD8/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTYzNDIwNi04NDk5MTAtMDAwLXZvbHZvLXY0MC0wMDEtMi5qcGc=)
 
-![Jeremy Gallery - Volvo V40 photo 3](https://px-web-images4.pixpa.com/OVuplYNtvF3tChx1QE4CSWqmFHKBB7u6dxiDfAhWdwQ/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTYzNDI1Ni05MzM1NTItMDAwLXZvbHZvLXY0MC0wMDItMi5qcGc=)
+![Volvo V40 photo 3](https://px-web-images4.pixpa.com/OVuplYNtvF3tChx1QE4CSWqmFHKBB7u6dxiDfAhWdwQ/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTYzNDI1Ni05MzM1NTItMDAwLXZvbHZvLXY0MC0wMDItMi5qcGc=)

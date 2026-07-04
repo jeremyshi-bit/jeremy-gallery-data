@@ -1,6 +1,6 @@
 ---
 id: bologna-airport
-title: Jeremy Gallery - Bologna Airport
+title: Bologna Airport
 date: 2017-07-30
 updatedAt: 2017-07-30
 author: Jeremy
@@ -13,13 +13,11 @@ isPublished: false
 isFeatured: false
 readingMinutes: 2
 ---
-# Jeremy Gallery - Bologna Airport
+# Bologna Airport
 
-![Jeremy Gallery - Bologna Airport](https://px-web-images-v2.pixpa.com/TlFcbrowN25RZ9anIJfmYgZMaI54rk1qo4EMR1j1oSY/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI4MjEwNzQtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMi5qcGc=)
+![Bologna Airport](https://px-web-images-v2.pixpa.com/TlFcbrowN25RZ9anIJfmYgZMaI54rk1qo4EMR1j1oSY/rs:fit:1200:0/q:80/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvNjkwNTI3LTE2ODI4MjEwNzQtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMi5qcGc=)
 
 Jul 30, 2017
-
-Bologna Airport
 
 Bologna Guglielmo Marconi Airport—named after the man who sent the first telegraph across the world.
 
@@ -33,4 +31,4 @@ A simple airport moment, but one where the machinery tells its own story—funct
 
 ## Photos
 
-![Jeremy Gallery - Bologna Airport photo 1](https://px-web-images5.pixpa.com/wSca61MBUzKEA6kasYgZ03etnivS6peOmtaMKK2vw2E/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MjgyMTA5Ni0zMDU5MjEtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMS5qcGc=)
+![Bologna Airport photo 1](https://px-web-images5.pixpa.com/wSca61MBUzKEA6kasYgZ03etnivS6peOmtaMKK2vw2E/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MjgyMTA5Ni0zMDU5MjEtMDA1LWJsb2ctcGljdHVyZS1ib2xvZ25hLTAwMS5qcGc=)
