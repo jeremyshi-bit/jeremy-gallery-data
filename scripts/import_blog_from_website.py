@@ -203,6 +203,22 @@ def image_url_from_item(item: dict, page_url: str) -> str:
 
     return ""
 
+def image_alt_from_item(item: dict) -> str:
+    for attr in ["alt", "title"]:
+        value = item.get(attr)
+
+        if value:
+            value = normalize_text(value)
+
+            if value:
+                return value
+
+    return ""
+
+
+def escape_markdown_alt_text(value: str) -> str:
+    return value.replace("[", "\\[").replace("]", "\\]")
+
 
 def decode_pixpa_original_key(image_url: str) -> str:
     """
@@ -233,7 +249,7 @@ def decode_pixpa_original_key(image_url: str) -> str:
     return image_url.lower()
 
 
-def extract_page_images(parser: BlogPageParser, page_url: str) -> list[str]:
+def extract_page_image_records(parser: BlogPageParser, page_url: str) -> list[dict]:
     images = []
     seen_keys = set()
 
@@ -249,9 +265,23 @@ def extract_page_images(parser: BlogPageParser, page_url: str) -> list[str]:
             continue
 
         seen_keys.add(key)
-        images.append(image_url)
+
+        images.append(
+            {
+                "url": image_url,
+                "alt": image_alt_from_item(item),
+                "key": key,
+            }
+        )
 
     return images
+
+
+def extract_page_images(parser: BlogPageParser, page_url: str) -> list[str]:
+    return [
+        image["url"]
+        for image in extract_page_image_records(parser, page_url)
+    ]
 
 
 def extract_cover_image(parser: BlogPageParser, page_url: str) -> str:
@@ -269,7 +299,7 @@ def extract_cover_image(parser: BlogPageParser, page_url: str) -> str:
     return ""
 
 
-def has_latest_posts_tail(image_urls: list[str]) -> bool:
+def has_latest_posts_tail(image_records: list[dict]) -> bool:
     """
     Pixpa blog pages currently append the same Latest Posts image block
     at the end of each blog page:
@@ -279,12 +309,12 @@ def has_latest_posts_tail(image_urls: list[str]) -> bool:
 
     These are navigation/recommendation images, not article body images.
     """
-    if len(image_urls) < 4:
+    if len(image_records) < 4:
         return False
 
     tail_keys = [
-        decode_pixpa_original_key(image_url)
-        for image_url in image_urls[-3:]
+        image["key"]
+        for image in image_records[-3:]
     ]
 
     tail_text = "\n".join(tail_keys)
@@ -296,8 +326,8 @@ def has_latest_posts_tail(image_urls: list[str]) -> bool:
     )
 
 
-def extract_article_images(parser: BlogPageParser, page_url: str) -> list[str]:
-    all_images = extract_page_images(parser, page_url)
+def extract_article_images(parser: BlogPageParser, page_url: str) -> list[dict]:
+    all_images = extract_page_image_records(parser, page_url)
 
     if has_latest_posts_tail(all_images):
         return all_images[:-3]
@@ -311,19 +341,19 @@ def extract_body_images(
     slug: str,
     title: str,
     cover_image_url: str,
-) -> list[str]:
+) -> list[dict]:
     article_images = extract_article_images(parser, page_url)
     body_images = []
 
     cover_key = decode_pixpa_original_key(cover_image_url) if cover_image_url else ""
 
-    for image_url in article_images:
-        image_key = decode_pixpa_original_key(image_url)
+    for image in article_images:
+        image_key = image["key"]
 
         if cover_key and image_key == cover_key:
             continue
 
-        body_images.append(image_url)
+        body_images.append(image)
 
     return body_images
 
@@ -473,11 +503,11 @@ def clean_body_lines(lines, title):
     return cleaned_lines
 
 
-def build_markdown_body(title, body_lines, cover_image_url, body_image_urls):
+def build_markdown_body(title, body_lines, cover_image_url, body_images):
     lines = [f"# {title}", ""]
 
     if cover_image_url:
-        lines.append(f"![{title}]({cover_image_url})")
+        lines.append(f"![{escape_markdown_alt_text(title)}]({cover_image_url})")
         lines.append("")
 
     if body_lines:
@@ -488,12 +518,17 @@ def build_markdown_body(title, body_lines, cover_image_url, body_image_urls):
         lines.append("Imported from Jeremy Gallery.")
         lines.append("")
 
-    if body_image_urls:
+    if body_images:
         lines.append("## Photos")
         lines.append("")
 
-        for index, image_url in enumerate(body_image_urls, start=1):
-            lines.append(f"![{title} photo {index}]({image_url})")
+        for index, image in enumerate(body_images, start=1):
+            image_url = image["url"]
+            alt_text = image.get("alt") or f"{title} photo {index}"
+
+            lines.append(
+                f"![{escape_markdown_alt_text(alt_text)}]({image_url})"
+            )
             lines.append("")
 
     return "\n".join(lines).strip() + "\n"
@@ -516,13 +551,13 @@ def create_markdown_file(url: str):
     date = extract_date(parser)
     tags = extract_tags_from_text_lines(parser.text_lines)
     body_lines = clean_body_lines(parser.text_lines, title)
-    body_image_urls = extract_body_images(
+    body_images = extract_body_images(
         parser=parser,
         page_url=url,
         slug=slug,
         title=title,
         cover_image_url=cover_image_url,
-    )
+)
 
     front_matter = [
         "---",
@@ -554,7 +589,7 @@ def create_markdown_file(url: str):
         title=title,
         body_lines=body_lines,
         cover_image_url=cover_image_url,
-        body_image_urls=body_image_urls,
+        body_images=body_images,
     )
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -568,7 +603,7 @@ def create_markdown_file(url: str):
     print(
         f"Imported draft: {output_path.relative_to(REPO_ROOT)} "
         f"with {1 if cover_image_url else 0} cover image "
-        f"and {len(body_image_urls)} body images"
+        f"and {len(body_images)} body images"
     )
 
 
