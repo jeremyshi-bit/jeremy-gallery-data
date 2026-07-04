@@ -110,8 +110,20 @@ def slug_from_url(url: str) -> str:
 
 def clean_title(value: str) -> str:
     value = normalize_text(value)
+
+    # Remove browser/SEO title suffix, e.g. "AMS | Jeremy Gallery"
     value = re.sub(r"\s*\|\s*Jeremy Gallery\s*$", "", value, flags=re.I)
+
+    # Remove browser/SEO title suffix, e.g. "AMS - Jeremy Gallery"
     value = re.sub(r"\s*-\s*Jeremy Gallery\s*$", "", value, flags=re.I)
+
+    # Remove browser/SEO title prefix, e.g. "Jeremy Gallery - AMS"
+    value = re.sub(r"^Jeremy Gallery\s*-\s*", "", value, flags=re.I)
+
+    # If the page title is only "Jeremy Gallery", avoid using it as article title.
+    if value.strip().lower() == "jeremy gallery":
+        return ""
+
     return value.strip()
 
 
