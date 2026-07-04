@@ -199,23 +199,6 @@ def canonical_image_key(url: str) -> str:
     return decoded_path.lower()
 
 
-def canonical_image_key(url: str) -> str:
-    """
-    Produce a stable dedupe key for the original image.
-    Prefer the original decoded filename/path from Pixpa.
-    """
-    decoded_path = decode_pixpa_asset_path(url)
-
-    parsed = urlparse(decoded_path)
-    filename = parsed.path.split("/")[-1] if parsed.path else decoded_path.split("/")[-1]
-    filename = unquote(filename).lower()
-
-    if filename and "." in filename:
-        return filename
-
-    return decoded_path.lower()
-
-
 def extract_date_from_image_url(image_url: str) -> str:
     """
     Extract date from Pixpa original image filename.
@@ -380,8 +363,6 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
                         if (style.visibility === "hidden") return false;
                         if (parseFloat(style.opacity || "1") === 0) return false;
 
-                        // The image may be above the current viewport after scrolling,
-                        // but it still belongs to the page layout if it has real size.
                         if (rect.width < 20 || rect.height < 20) return false;
 
                         return true;
@@ -429,7 +410,7 @@ def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
             if stable_rounds >= 4:
                 break
 
-                browser.close()
+        browser.close()
 
     return candidates
 
