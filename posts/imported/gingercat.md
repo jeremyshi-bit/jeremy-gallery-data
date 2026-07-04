@@ -39,8 +39,8 @@ If you asked him to describe his world, it would sound something like this:
 
 ## Photos
 
-![Designer's Cat photo 1](https://px-web-images5.pixpa.com/3WxTzb9hdi-_a__NFiAoqYp_Nnaxn87kuKJAE9kn9Mk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDQyNC0xNzY5OTMtMDAwLWRlc2lnbmVyLWNhdC0wMDEuanBn)
+![Image Text is Here](https://px-web-images5.pixpa.com/3WxTzb9hdi-_a__NFiAoqYp_Nnaxn87kuKJAE9kn9Mk/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDQyNC0xNzY5OTMtMDAwLWRlc2lnbmVyLWNhdC0wMDEuanBn)
 
-![Designer's Cat photo 2](https://px-web-images2.pixpa.com/58yjC0e9uZyvKww2LIpbGXE4G6y3wF3B1IqdPCv6jd0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDYwNC02ODgzNzItMDAwLWRlc2lnbmVyLWNhdC0wMDQuanBn)
+![Image Text is Here](https://px-web-images2.pixpa.com/58yjC0e9uZyvKww2LIpbGXE4G6y3wF3B1IqdPCv6jd0/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDYwNC02ODgzNzItMDAwLWRlc2lnbmVyLWNhdC0wMDQuanBn)
 
 ![Designer's Cat photo 3](https://px-web-images4.pixpa.com/dAhTCE3W_zrxc-pbWvskpRroQvvduY0wjMLOHJjmhMY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTY0MDgyMC0yODU4Ni0wMDAtZGVzaWduZXItY2F0LTAwMi5qcGc=)

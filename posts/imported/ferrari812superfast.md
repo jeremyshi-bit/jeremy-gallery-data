@@ -37,8 +37,8 @@ Because some cars invite you to linger, and the 812 Superfast—with its presenc
 
 ## Photos
 
-![Ferrari 812 Superfast photo 1](https://px-web-images8.pixpa.com/KOEdSKdAFYyB5adS0PI3oVDQfBzcroNGll0CEJw5aFY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzU2OC05NzQ0ODctMDAwLTgxMi1zdXBlci0wMDEuanBn)
+![Image Text is Here](https://px-web-images8.pixpa.com/KOEdSKdAFYyB5adS0PI3oVDQfBzcroNGll0CEJw5aFY/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzU2OC05NzQ0ODctMDAwLTgxMi1zdXBlci0wMDEuanBn)
 
-![Ferrari 812 Superfast photo 2](https://px-web-images3.pixpa.com/Kepio0ZhjMmbPdNWVfy-yK372fEqFHjj-rjn43uRj54/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzg5NC03NDc5MzUtMDAwLTgxMi1zdXBlci0wMDMuanBn)
+![Image Text is Here](https://px-web-images3.pixpa.com/Kepio0ZhjMmbPdNWVfy-yK372fEqFHjj-rjn43uRj54/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyNzg5NC03NDc5MzUtMDAwLTgxMi1zdXBlci0wMDMuanBn)
 
-![Ferrari 812 Superfast photo 3](https://px-web-images3.pixpa.com/MknXFmXhyhHVMLO9sy-5x0Y2UTKJECza_8qUdrY0524/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyODI0Ny01NzY4ODQtMDAwLTgxMi1zdXBlci0wMDIuanBn)
+![Image Text is Here](https://px-web-images3.pixpa.com/MknXFmXhyhHVMLO9sy-5x0Y2UTKJECza_8qUdrY0524/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTgyODI0Ny01NzY4ODQtMDAwLTgxMi1zdXBlci0wMDIuanBn)

@@ -37,4 +37,4 @@ Seeing it parked here at Monza, surrounded by water, engines, and winter air, fe
 
 ## Photos
 
-![Iveco Massif photo 1](https://px-web-images5.pixpa.com/iP2DHThSnFYh-8-MnxFND4OiFTGbTS_EfhAI4dxgi4w/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTkxNDg2NS0zMjI5MjQtMDAwLW1hc3NpdmUtMDAxLmpwZw==)
+![Image Text is Here](https://px-web-images5.pixpa.com/iP2DHThSnFYh-8-MnxFND4OiFTGbTS_EfhAI4dxgi4w/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4MTkxNDg2NS0zMjI5MjQtMDAwLW1hc3NpdmUtMDAxLmpwZw==)

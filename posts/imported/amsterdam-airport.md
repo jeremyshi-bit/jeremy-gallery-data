@@ -35,8 +35,8 @@ A brief pause, a final look across the tarmac lit by cold sodium light—then it
 
 ## Photos
 
-![Amsterdam Airport photo 1](https://px-web-images5.pixpa.com/PkEUoA1iPhjFt86jzxH8AIQiP4-FMvtAyVzE0GAcoKw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0MzI2MC00NTE0NjYtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAxLmpwZw==)
+![AMS Text 1](https://px-web-images5.pixpa.com/PkEUoA1iPhjFt86jzxH8AIQiP4-FMvtAyVzE0GAcoKw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0MzI2MC00NTE0NjYtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAxLmpwZw==)
 
-![Amsterdam Airport photo 2](https://px-web-images2.pixpa.com/5m562gkLqWkkonUHwvVn_NetULdBpIw6kbTjUPCZNe4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDEyNi0yNjA5MDQtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAzLmpwZw==)
+![AMS Text 2](https://px-web-images2.pixpa.com/5m562gkLqWkkonUHwvVn_NetULdBpIw6kbTjUPCZNe4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDEyNi0yNjA5MDQtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDAzLmpwZw==)
 
-![Amsterdam Airport photo 3](https://px-web-images5.pixpa.com/3O5gk1Ajgk0CBEiROsooHmYCiSjgbjwFp0572mtWTX4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDUyMS03NTQyOTUtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDA0LmpwZw==)
+![AMS Text 3](https://px-web-images5.pixpa.com/3O5gk1Ajgk0CBEiROsooHmYCiSjgbjwFp0572mtWTX4/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk0NDUyMS03NTQyOTUtMDA1LWItYW1zdGVyZGFtLWFpcnBvcnQtMDA0LmpwZw==)

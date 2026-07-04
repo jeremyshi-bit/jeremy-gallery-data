@@ -31,6 +31,6 @@ A brief meeting with a traveler built for distance—caught between departure an
 
 ## Photos
 
-![Costa Atlantica photo 1](https://px-web-images1.pixpa.com/pD6KaKiwJoAVW-fUw7aOUVsYLfTmoYHakJXktGzZm8g/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTI2OS03ODgxMjgtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMi5qcGc=)
+![Image Text is Here](https://px-web-images1.pixpa.com/pD6KaKiwJoAVW-fUw7aOUVsYLfTmoYHakJXktGzZm8g/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTI2OS03ODgxMjgtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMi5qcGc=)
 
-![Costa Atlantica photo 2](https://px-web-images3.pixpa.com/2wTINr0Ch1MMhRQ0BOlXtXRPKAFa4HjbwZW1n0oQAgw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTY4OS0zNjc1ODAtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMy5qcGc=)
+![Image Text is Here](https://px-web-images3.pixpa.com/2wTINr0Ch1MMhRQ0BOlXtXRPKAFa4HjbwZW1n0oQAgw/rs:fit:1200:0/q:90/czM6Ly9waXhwYS10ZXN0L2NvbS9sYXJnZS82OTA1MjcvMTY4Mjk1MTY4OS0zNjc1ODAtMDA1LWItY29zdGEtYXRsYW50aWNhLTAwMy5qcGc=)
