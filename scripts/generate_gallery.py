@@ -27,6 +27,18 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 }
 
+ALBUM_DATES = {
+    # Format: "YYYY-MM-DD"
+    # Fill these keys according to the album ids in gallery.json.
+    # Empty or missing date means the App will not show a date chip.
+
+    "milano": "2023-07-08",
+    "blog-pictures": "2017-08-19",
+
+    # Add the remaining albums here, for example:
+    # "modena-walk": "2019-09-13",
+    # "amsterdam-airport": "2019-11-18",
+}
 
 def fetch_text(url: str) -> str | None:
     try:
@@ -55,6 +67,8 @@ def title_from_slug(slug: str) -> str:
     }
     return mapping.get(slug, slug.replace("-", " ").title())
 
+def date_from_album_id(album_id: str) -> str:
+    return ALBUM_DATES.get(album_id, "")
 
 def is_portfolio_page(url: str) -> bool:
     parsed = urlparse(url)
@@ -413,6 +427,7 @@ def build_gallery_json() -> dict:
             {
                 "id": album_id,
                 "title": album_title,
+                "date": date_from_album_id(album_id),
                 "pageUrl": page_url,
                 "coverUrl": image_urls[0],
                 "photos": photos,
