@@ -27,17 +27,13 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 }
 
-ALBUM_DATES = {
+ALBUM_DATE_OVERRIDES = {
+    # Optional manual overrides.
+    # Use this only if the automatically detected date is wrong.
     # Format: "YYYY-MM-DD"
-    # Fill these keys according to the album ids in gallery.json.
-    # Empty or missing date means the App will not show a date chip.
 
-    "milano": "2023-07-08",
-    "blog-pictures": "2017-08-19",
-
-    # Add the remaining albums here, for example:
-    # "modena-walk": "2019-09-13",
-    # "amsterdam-airport": "2019-11-18",
+    # "milano": "2023-07-08",
+    # "blog-pictures": "2017-08-19",
 }
 
 def fetch_text(url: str) -> str | None:
@@ -67,8 +63,6 @@ def title_from_slug(slug: str) -> str:
     }
     return mapping.get(slug, slug.replace("-", " ").title())
 
-def date_from_album_id(album_id: str) -> str:
-    return ALBUM_DATES.get(album_id, "")
 
 def is_portfolio_page(url: str) -> bool:
     parsed = urlparse(url)
@@ -203,6 +197,81 @@ def canonical_image_key(url: str) -> str:
         return filename
 
     return decoded_path.lower()
+
+
+def canonical_image_key(url: str) -> str:
+    """
+    Produce a stable dedupe key for the original image.
+    Prefer the original decoded filename/path from Pixpa.
+    """
+    decoded_path = decode_pixpa_asset_path(url)
+
+    parsed = urlparse(decoded_path)
+    filename = parsed.path.split("/")[-1] if parsed.path else decoded_path.split("/")[-1]
+    filename = unquote(filename).lower()
+
+    if filename and "." in filename:
+        return filename
+
+    return decoded_path.lower()
+
+
+def extract_date_from_image_url(image_url: str) -> str:
+    """
+    Extract date from Pixpa original image filename.
+
+    Pixpa decoded filenames often include a Unix timestamp, for example:
+    1688802759-790490-010-d-sony-milano021.jpg
+
+    1688802759 -> 2023-07-08
+    """
+    decoded_path = decode_pixpa_asset_path(image_url)
+
+    parsed = urlparse(decoded_path)
+    filename = parsed.path.split("/")[-1] if parsed.path else decoded_path.split("/")[-1]
+    filename = unquote(filename).lower()
+
+    timestamp_candidates = re.findall(r"(?<!\d)(\d{10})(?!\d)", filename)
+
+    for candidate in timestamp_candidates:
+        try:
+            timestamp = int(candidate)
+            parsed_date = datetime.fromtimestamp(timestamp, tz=timezone.utc)
+        except Exception:
+            continue
+
+        # Keep only realistic dates.
+        current_year = datetime.now(timezone.utc).year
+        if 2000 <= parsed_date.year <= current_year + 1:
+            return parsed_date.date().isoformat()
+
+    return ""
+
+
+def date_from_album_images(album_id: str, image_urls: list[str]) -> str:
+    """
+    Determine album date from its images.
+
+    Priority:
+    1. Manual override, if defined.
+    2. Earliest valid Pixpa image timestamp in this album.
+    3. Empty string if no date can be detected.
+    """
+    if album_id in ALBUM_DATE_OVERRIDES:
+        return ALBUM_DATE_OVERRIDES[album_id]
+
+    detected_dates = []
+
+    for image_url in image_urls:
+        image_date = extract_date_from_image_url(image_url)
+
+        if image_date:
+            detected_dates.append(image_date)
+
+    if detected_dates:
+        return min(detected_dates)
+
+    return ""
 
 
 def album_specific_image_key(album_id: str, url: str) -> str | None:
@@ -410,6 +479,13 @@ def build_gallery_json() -> dict:
             print(f"[WARN] No images found for {page_url}")
             continue
 
+        album_date = date_from_album_images(album_id, image_urls)
+
+        if album_date:
+            print(f"[INFO] Album date for {album_id}: {album_date}")
+        else:
+            print(f"[WARN] No album date detected for {album_id}")
+
         photos = []
 
         for index, image_url in enumerate(image_urls, start=1):
@@ -423,16 +499,16 @@ def build_gallery_json() -> dict:
                 }
             )
 
-        albums.append(
-            {
-                "id": album_id,
-                "title": album_title,
-                "date": date_from_album_id(album_id),
-                "pageUrl": page_url,
-                "coverUrl": image_urls[0],
-                "photos": photos,
-            }
-        )
+            albums.append(
+                {
+                    "id": album_id,
+                    "title": album_title,
+                    "date": album_date,
+                    "pageUrl": page_url,
+                    "coverUrl": image_urls[0],
+                    "photos": photos,
+                }
+            )
 
     total_photos = sum(len(album["photos"]) for album in albums)
 
