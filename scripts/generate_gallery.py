@@ -36,40 +36,6 @@ ALBUM_DATE_OVERRIDES = {
     # "blog-pictures": "2017-08-19",
 }
 
-TAG_EXCLUDE_WORDS = {
-    "",
-    "all",
-    "back",
-    "blog",
-    "close",
-    "contact",
-    "gallery",
-    "galleries",
-    "home",
-    "image",
-    "images",
-    "menu",
-    "next",
-    "photo",
-    "photos",
-    "portfolio",
-    "previous",
-    "share",
-    "tags",
-    "tag",
-    "view",
-    "view all",
-    "loading more images",
-    "loading more images . . .",
-    "previous next",
-    "previous",
-    "next",
-    "copied",
-    "book a session",
-    "get in touch",
-    "support the site",
-}
-
 
 def fetch_text(url: str) -> str | None:
     try:
@@ -97,144 +63,6 @@ def title_from_slug(slug: str) -> str:
         "hong-kong": "Hong Kong",
     }
     return mapping.get(slug, slug.replace("-", " ").title())
-
-
-def normalize_text(text: str) -> str:
-    return " ".join((text or "").replace("\xa0", " ").split()).strip()
-
-
-def strip_site_suffix(title: str) -> str:
-    """
-    Remove common website suffixes from page title.
-    Examples:
-    Milano (2018) | Jeremy Gallery -> Milano (2018)
-    Milano (2018) - Jeremy Gallery -> Milano (2018)
-    """
-    title = normalize_text(title)
-
-    suffix_patterns = [
-        r"\s*\|\s*Jeremy\s*Gallery\s*$",
-        r"\s*-\s*Jeremy\s*Gallery\s*$",
-        r"\s*—\s*Jeremy\s*Gallery\s*$",
-    ]
-
-    for pattern in suffix_patterns:
-        title = re.sub(pattern, "", title, flags=re.IGNORECASE)
-
-    return normalize_text(title)
-
-
-def parse_album_title_and_tags(raw_title: str, fallback_title: str) -> tuple[str, list[str]]:
-    """
-    Parse album title and tags from a title like:
-    Milano (2018)
-    Cat Coffee Shanghai (2023, Cat, Shanghai)
-
-    Returns:
-    ("Milano", ["2018"])
-    ("Cat Coffee Shanghai", ["2023", "Cat", "Shanghai"])
-    """
-    title = strip_site_suffix(raw_title)
-
-    if not title:
-        return fallback_title, []
-
-    match = re.match(r"^(?P<title>.*?)\s*\((?P<tags>[^()]+)\)\s*$", title)
-
-    if not match:
-        return title, []
-
-    clean_title = normalize_text(match.group("title"))
-    raw_tags = match.group("tags")
-
-    tags = []
-
-    for item in raw_tags.split(","):
-        tag = normalize_text(item)
-
-        if tag:
-            tags.append(tag)
-
-    return clean_title or fallback_title, tags
-
-
-def extract_album_title_and_tags_from_html(
-    page_url: str,
-    fallback_title: str,
-) -> tuple[str, list[str]]:
-    """
-    Read the public Pixpa page title and extract tags from parentheses.
-    """
-    html = fetch_text(page_url)
-
-    if not html:
-        return fallback_title, []
-
-    soup = BeautifulSoup(html, "lxml")
-
-    candidates = []
-
-    if soup.title and soup.title.string:
-        candidates.append(soup.title.string)
-
-    for selector in [
-        'meta[property="og:title"]',
-        'meta[name="twitter:title"]',
-    ]:
-        element = soup.select_one(selector)
-
-        if element and element.get("content"):
-            candidates.append(element.get("content"))
-
-    for selector in ["h1", "h2"]:
-        element = soup.select_one(selector)
-
-        if element:
-            text = element.get_text(" ", strip=True)
-
-            if text:
-                candidates.append(text)
-
-    # Prefer title candidates that contain parentheses, because that is where tags are stored.
-    for candidate in candidates:
-        album_title, tags = parse_album_title_and_tags(candidate, fallback_title)
-
-        if tags:
-            return album_title, tags
-
-    # Fallback: use the first clean title even if it has no tags.
-    for candidate in candidates:
-        album_title, tags = parse_album_title_and_tags(candidate, fallback_title)
-
-        if album_title:
-            return album_title, tags
-
-    return fallback_title, []
-
-
-def merge_album_tags(*tag_lists: list[str]) -> list[str]:
-    """
-    Merge and de-duplicate tags while preserving order.
-    """
-    merged = []
-    seen = set()
-
-    for tag_list in tag_lists:
-        for tag in tag_list:
-            clean_tag = normalize_text(tag)
-
-            if not clean_tag:
-                continue
-
-            key = clean_tag.casefold()
-
-            if key in seen:
-                continue
-
-            merged.append(clean_tag)
-            seen.add(key)
-
-    return merged
 
 
 def is_portfolio_page(url: str) -> bool:
@@ -459,155 +287,6 @@ def album_specific_image_key(album_id: str, url: str) -> str | None:
     return filename
 
 
-def split_raw_tag_text(raw_text: str) -> list[str]:
-    """
-    Split raw tag text into possible individual tags.
-
-    Examples:
-    "2018 · Italy · Travel" -> ["2018", "Italy", "Travel"]
-    "2018\nItaly\nTravel" -> ["2018", "Italy", "Travel"]
-    """
-    if not raw_text:
-        return []
-
-    text = raw_text.replace("\xa0", " ").strip()
-
-    # Common separators used in tag areas
-    parts = re.split(r"[\n\r\t,|•·]+", text)
-
-    cleaned_parts = []
-
-    for part in parts:
-        tag = " ".join(part.split()).strip()
-        tag = tag.strip("#").strip()
-
-        if tag:
-            cleaned_parts.append(tag)
-
-    return cleaned_parts
-
-
-def is_valid_album_tag(tag: str) -> bool:
-    """
-    Basic filtering to avoid collecting menu labels, long text blocks,
-    image captions, and unrelated UI text.
-    """
-    if not tag:
-        return False
-
-    normalized = " ".join(tag.split()).strip()
-    lower = normalized.lower()
-
-    if lower in TAG_EXCLUDE_WORDS:
-        return False
-
-    if len(normalized) > 40:
-        return False
-
-    # Avoid collecting large chunks or technical strings
-    blocked_fragments = [
-        "http://",
-        "https://",
-        "www.",
-        "{",
-        "}",
-        "[",
-        "]",
-        "px-web-images",
-        "pixpa.com",
-        "javascript:",
-    ]
-
-    if any(fragment in lower for fragment in blocked_fragments):
-        return False
-
-    # Avoid image filenames
-    if re.search(r"\.(jpg|jpeg|png|webp|gif|svg)$", lower):
-        return False
-
-    # Avoid pure numbers except 4-digit years
-    if lower.isdigit() and not re.fullmatch(r"(19|20)\d{2}", lower):
-        return False
-
-    # Avoid very long sentence-like strings
-    if len(normalized.split()) > 6:
-        return False
-
-    return True
-
-
-def clean_album_tags(raw_tags: list[str]) -> list[str]:
-    """
-    Clean, split, filter, and de-duplicate tags while keeping original order.
-    """
-    cleaned = []
-    seen = set()
-
-    for raw_tag in raw_tags:
-        for tag in split_raw_tag_text(raw_tag):
-            if not is_valid_album_tag(tag):
-                continue
-
-            key = tag.casefold()
-
-            if key in seen:
-                continue
-
-            cleaned.append(tag)
-            seen.add(key)
-
-    return cleaned
-
-
-def extract_tags_from_static_html(page_url: str, html: str) -> list[str]:
-    """
-    Fallback tag extraction from static HTML.
-    This is used only if browser-based extraction returns no tags.
-    """
-    soup = BeautifulSoup(html, "lxml")
-    raw_tags = []
-
-    selectors = [
-        '[class*="tag"]',
-        '[class*="Tag"]',
-        '[class*="category"]',
-        '[class*="Category"]',
-        'a[href*="tag"]',
-        'a[href*="tags"]',
-        'a[href*="category"]',
-        'a[href*="categories"]',
-    ]
-
-    for selector in selectors:
-        for element in soup.select(selector):
-            text = element.get_text(" ", strip=True)
-            if text:
-                raw_tags.append(text)
-
-            for attr in [
-                "title",
-                "aria-label",
-                "data-tag",
-                "data-tags",
-                "data-category",
-                "data-categories",
-            ]:
-                value = element.get(attr)
-                if value:
-                    raw_tags.append(value)
-
-    # Some Pixpa pages may expose keyword-like metadata.
-    # Keep this as a weak fallback. The cleaning function will remove obvious noise.
-    for meta in soup.find_all("meta"):
-        name = (meta.get("name") or meta.get("property") or "").lower()
-        content = meta.get("content") or ""
-
-        if name in {"keywords", "article:tag"} and content:
-            raw_tags.append(content)
-
-    return clean_album_tags(raw_tags)
-
-
 def extract_candidate_urls_from_html(page_url: str, html: str) -> list[str]:
     soup = BeautifulSoup(html, "lxml")
     candidates = []
@@ -641,11 +320,10 @@ def extract_candidate_urls_from_html(page_url: str, html: str) -> list[str]:
     return candidates
 
 
-def extract_candidate_urls_and_tags_with_browser(page_url: str) -> tuple[list[str], list[str]]:
+def extract_candidate_urls_with_browser(page_url: str) -> list[str]:
     print(f"[INFO] Opening page with browser: {page_url}")
 
     candidates = []
-    browser_tags = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -655,64 +333,6 @@ def extract_candidate_urls_and_tags_with_browser(page_url: str) -> tuple[list[st
         )
 
         page.goto(page_url, wait_until="networkidle", timeout=60000)
-
-        # Extract visible or DOM-based tags once the page is loaded.
-        raw_tags = page.evaluate(
-            """
-            () => {
-                const values = [];
-
-                const selectors = [
-                    '[class*="tag" i]',
-                    '[class*="category" i]',
-                    'a[href*="tag" i]',
-                    'a[href*="tags" i]',
-                    'a[href*="category" i]',
-                    'a[href*="categories" i]',
-                    '[data-tag]',
-                    '[data-tags]',
-                    '[data-category]',
-                    '[data-categories]'
-                ];
-
-                const attrNames = [
-                    'title',
-                    'aria-label',
-                    'data-tag',
-                    'data-tags',
-                    'data-category',
-                    'data-categories'
-                ];
-
-                function pushValue(value) {
-                    if (!value) return;
-
-                    const text = String(value).trim();
-                    if (text) {
-                        values.push(text);
-                    }
-                }
-
-                for (const selector of selectors) {
-                    document.querySelectorAll(selector).forEach(el => {
-                        pushValue(el.innerText || el.textContent || '');
-
-                        for (const attr of attrNames) {
-                            pushValue(el.getAttribute(attr));
-                        }
-                    });
-                }
-
-                document.querySelectorAll('meta[name="keywords"], meta[property="article:tag"]').forEach(el => {
-                    pushValue(el.getAttribute('content'));
-                });
-
-                return values;
-            }
-            """
-        )
-
-        browser_tags = clean_album_tags(raw_tags)
 
         previous_unique_count = 0
         stable_rounds = 0
@@ -793,36 +413,22 @@ def extract_candidate_urls_and_tags_with_browser(page_url: str) -> tuple[list[st
 
         browser.close()
 
-    return candidates, browser_tags
+    return candidates
 
 
-def extract_page_data(page_url: str) -> tuple[list[str], list[str]]:
-    """
-    Extract gallery image URLs and album tags from one Pixpa portfolio page.
-    """
+def extract_images_from_page(page_url: str) -> list[str]:
     print(f"[INFO] Reading portfolio page: {page_url}")
 
-    # 先用真实浏览器滚动页面，抓取当前相册真正可见的图片和 tags
-    browser_candidates, album_tags = extract_candidate_urls_and_tags_with_browser(page_url)
+    # 先用真实浏览器滚动页面，抓取当前相册真正可见的图片
+    browser_candidates = extract_candidate_urls_with_browser(page_url)
 
     print(f"[INFO] Browser visible matched images: {len(browser_candidates)}")
-    print(f"[INFO] Browser matched tags: {album_tags}")
 
-    html = None
-
-    # 如果浏览器没有抓到图片，再 fallback 到静态 HTML
+    # 如果浏览器没有抓到，再 fallback 到静态 HTML
     if not browser_candidates:
         print("[WARN] Browser found no images. Falling back to static HTML.")
         html = fetch_text(page_url)
         browser_candidates = extract_candidate_urls_from_html(page_url, html) if html else []
-
-    # 如果浏览器没有抓到 tags，也 fallback 到静态 HTML
-    if not album_tags:
-        print("[WARN] Browser found no tags. Falling back to static HTML for tags.")
-        if html is None:
-            html = fetch_text(page_url)
-
-        album_tags = extract_tags_from_static_html(page_url, html) if html else []
 
     deduped = {}
 
@@ -835,18 +441,8 @@ def extract_page_data(page_url: str) -> tuple[list[str], list[str]]:
     images = list(deduped.values())
 
     print(f"[INFO] Final unique visible images after dedupe: {len(images)} from {page_url}")
-    print(f"[INFO] Final album tags: {album_tags}")
 
-    return images, album_tags
-
-
-def extract_images_from_page(page_url: str) -> list[str]:
-    """
-    Backward-compatible wrapper.
-    If other scripts still call extract_images_from_page(), it will keep working.
-    """
-    image_urls, _ = extract_page_data(page_url)
-    return image_urls
+    return images
 
 
 def build_gallery_json() -> dict:
@@ -859,17 +455,8 @@ def build_gallery_json() -> dict:
 
     for page_url in pages:
         album_id = slug_from_url(page_url)
-        fallback_title = title_from_slug(album_id)
-        
-        album_title, title_tags = extract_album_title_and_tags_from_html(
-            page_url,
-            fallback_title,
-        )
-        
-        image_urls, _ignored_dom_tags = extract_page_data(page_url)
-        # 当前 Pixpa Portfolio 页面没有稳定暴露真正的独立 Tag DOM。
-        # 因此先只使用标题括号里的 tags，避免误抓 Loading / Previous / Next。
-        album_tags = merge_album_tags(title_tags)
+        album_title = title_from_slug(album_id)
+        image_urls = extract_images_from_page(page_url)
 
         if not image_urls:
             print(f"[WARN] No images found for {page_url}")
@@ -881,11 +468,6 @@ def build_gallery_json() -> dict:
             print(f"[INFO] Album date for {album_id}: {album_date}")
         else:
             print(f"[WARN] No album date detected for {album_id}")
-
-        if album_tags:
-            print(f"[INFO] Tags for {album_id}: {album_tags}")
-        else:
-            print(f"[WARN] No tags detected for {album_id}")
 
         photos = []
 
@@ -908,7 +490,6 @@ def build_gallery_json() -> dict:
                 "pageUrl": page_url,
                 "coverUrl": image_urls[0],
                 "photoCount": len(photos),
-                "tags": album_tags,
                 "photos": photos,
             }
         )
