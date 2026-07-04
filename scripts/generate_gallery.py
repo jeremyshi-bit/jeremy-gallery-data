@@ -499,16 +499,16 @@ def build_gallery_json() -> dict:
                 }
             )
 
-            albums.append(
-                {
-                    "id": album_id,
-                    "title": album_title,
-                    "date": album_date,
-                    "pageUrl": page_url,
-                    "coverUrl": image_urls[0],
-                    "photos": photos,
-                }
-            )
+        albums.append(
+            {
+                "id": album_id,
+                "title": album_title,
+                "date": album_date,
+                "pageUrl": page_url,
+                "coverUrl": image_urls[0],
+                "photos": photos,
+            }
+        )
 
     total_photos = sum(len(album["photos"]) for album in albums)
 
