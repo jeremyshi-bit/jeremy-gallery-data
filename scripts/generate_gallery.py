@@ -59,6 +59,15 @@ TAG_EXCLUDE_WORDS = {
     "tag",
     "view",
     "view all",
+    "loading more images",
+    "loading more images . . .",
+    "previous next",
+    "previous",
+    "next",
+    "copied",
+    "book a session",
+    "get in touch",
+    "support the site",
 }
 
 
@@ -88,6 +97,144 @@ def title_from_slug(slug: str) -> str:
         "hong-kong": "Hong Kong",
     }
     return mapping.get(slug, slug.replace("-", " ").title())
+
+
+def normalize_text(text: str) -> str:
+    return " ".join((text or "").replace("\xa0", " ").split()).strip()
+
+
+def strip_site_suffix(title: str) -> str:
+    """
+    Remove common website suffixes from page title.
+    Examples:
+    Milano (2018) | Jeremy Gallery -> Milano (2018)
+    Milano (2018) - Jeremy Gallery -> Milano (2018)
+    """
+    title = normalize_text(title)
+
+    suffix_patterns = [
+        r"\s*\|\s*Jeremy\s*Gallery\s*$",
+        r"\s*-\s*Jeremy\s*Gallery\s*$",
+        r"\s*—\s*Jeremy\s*Gallery\s*$",
+    ]
+
+    for pattern in suffix_patterns:
+        title = re.sub(pattern, "", title, flags=re.IGNORECASE)
+
+    return normalize_text(title)
+
+
+def parse_album_title_and_tags(raw_title: str, fallback_title: str) -> tuple[str, list[str]]:
+    """
+    Parse album title and tags from a title like:
+    Milano (2018)
+    Cat Coffee Shanghai (2023, Cat, Shanghai)
+
+    Returns:
+    ("Milano", ["2018"])
+    ("Cat Coffee Shanghai", ["2023", "Cat", "Shanghai"])
+    """
+    title = strip_site_suffix(raw_title)
+
+    if not title:
+        return fallback_title, []
+
+    match = re.match(r"^(?P<title>.*?)\s*\((?P<tags>[^()]+)\)\s*$", title)
+
+    if not match:
+        return title, []
+
+    clean_title = normalize_text(match.group("title"))
+    raw_tags = match.group("tags")
+
+    tags = []
+
+    for item in raw_tags.split(","):
+        tag = normalize_text(item)
+
+        if tag:
+            tags.append(tag)
+
+    return clean_title or fallback_title, tags
+
+
+def extract_album_title_and_tags_from_html(
+    page_url: str,
+    fallback_title: str,
+) -> tuple[str, list[str]]:
+    """
+    Read the public Pixpa page title and extract tags from parentheses.
+    """
+    html = fetch_text(page_url)
+
+    if not html:
+        return fallback_title, []
+
+    soup = BeautifulSoup(html, "lxml")
+
+    candidates = []
+
+    if soup.title and soup.title.string:
+        candidates.append(soup.title.string)
+
+    for selector in [
+        'meta[property="og:title"]',
+        'meta[name="twitter:title"]',
+    ]:
+        element = soup.select_one(selector)
+
+        if element and element.get("content"):
+            candidates.append(element.get("content"))
+
+    for selector in ["h1", "h2"]:
+        element = soup.select_one(selector)
+
+        if element:
+            text = element.get_text(" ", strip=True)
+
+            if text:
+                candidates.append(text)
+
+    # Prefer title candidates that contain parentheses, because that is where tags are stored.
+    for candidate in candidates:
+        album_title, tags = parse_album_title_and_tags(candidate, fallback_title)
+
+        if tags:
+            return album_title, tags
+
+    # Fallback: use the first clean title even if it has no tags.
+    for candidate in candidates:
+        album_title, tags = parse_album_title_and_tags(candidate, fallback_title)
+
+        if album_title:
+            return album_title, tags
+
+    return fallback_title, []
+
+
+def merge_album_tags(*tag_lists: list[str]) -> list[str]:
+    """
+    Merge and de-duplicate tags while preserving order.
+    """
+    merged = []
+    seen = set()
+
+    for tag_list in tag_lists:
+        for tag in tag_list:
+            clean_tag = normalize_text(tag)
+
+            if not clean_tag:
+                continue
+
+            key = clean_tag.casefold()
+
+            if key in seen:
+                continue
+
+            merged.append(clean_tag)
+            seen.add(key)
+
+    return merged
 
 
 def is_portfolio_page(url: str) -> bool:
@@ -712,8 +859,17 @@ def build_gallery_json() -> dict:
 
     for page_url in pages:
         album_id = slug_from_url(page_url)
-        album_title = title_from_slug(album_id)
-        image_urls, album_tags = extract_page_data(page_url)
+        fallback_title = title_from_slug(album_id)
+        
+        album_title, title_tags = extract_album_title_and_tags_from_html(
+            page_url,
+            fallback_title,
+        )
+        
+        image_urls, _ignored_dom_tags = extract_page_data(page_url)
+        # 当前 Pixpa Portfolio 页面没有稳定暴露真正的独立 Tag DOM。
+        # 因此先只使用标题括号里的 tags，避免误抓 Loading / Previous / Next。
+        album_tags = merge_album_tags(title_tags)
 
         if not image_urls:
             print(f"[WARN] No images found for {page_url}")
