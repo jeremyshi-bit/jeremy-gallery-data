@@ -1,7 +1,6 @@
 import base64
 import json
 import re
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, unquote
@@ -13,6 +12,7 @@ from playwright.sync_api import sync_playwright
 
 
 SITE_URL = "https://www.jeremy.gallery"
+PORTFOLIO_INDEX_URL = "https://www.jeremy.gallery/portfolio"
 OUTPUT_JSON = Path("gallery.json")
 
 SITEMAP_URLS = [
@@ -47,6 +47,10 @@ def fetch_text(url: str) -> str | None:
         return None
 
 
+def normalize_text(text: str) -> str:
+    return " ".join((text or "").replace("\xa0", " ").split()).strip()
+
+
 def slug_from_url(url: str) -> str:
     path = urlparse(url).path.strip("/")
     slug = path.split("/")[-1]
@@ -61,6 +65,7 @@ def title_from_slug(slug: str) -> str:
         "egypt": "Egypt",
         "thailand": "Thailand",
         "hong-kong": "Hong Kong",
+        "hongkong": "Hong Kong",
     }
     return mapping.get(slug, slug.replace("-", " ").title())
 
@@ -152,6 +157,326 @@ def get_portfolio_pages_from_sitemap() -> list[str]:
             pages = ["https://www.jeremy.gallery/portfolio/milano"]
 
     return pages
+
+
+def extract_portfolio_index_albums() -> list[dict]:
+    """
+    Extract album metadata from the public Portfolio index page.
+
+    The Portfolio index page is the most reliable public source for:
+    1. album display title, e.g. "Hong Kong (2017)"
+    2. album listing cover image
+    3. album page URL
+    """
+    print(f"[INFO] Reading portfolio index page: {PORTFOLIO_INDEX_URL}")
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(
+                viewport={"width": 1440, "height": 2200},
+                user_agent=HEADERS["User-Agent"],
+            )
+
+            page.goto(PORTFOLIO_INDEX_URL, wait_until="networkidle", timeout=60000)
+
+            # Trigger lazy loading on the portfolio index page.
+            previous_height = 0
+            for _ in range(1, 8):
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                page.wait_for_timeout(800)
+
+                current_height = page.evaluate("document.body.scrollHeight")
+                if current_height == previous_height:
+                    break
+
+                previous_height = current_height
+
+            page.evaluate("window.scrollTo(0, 0)")
+            page.wait_for_timeout(500)
+
+            raw_albums = page.evaluate(
+                """
+                () => {
+                    const results = [];
+
+                    function cleanText(value) {
+                        return String(value || '').replace(/\\s+/g, ' ').trim();
+                    }
+
+                    function absoluteUrl(value) {
+                        if (!value) return '';
+
+                        try {
+                            return new URL(value, window.location.href).href;
+                        } catch {
+                            return '';
+                        }
+                    }
+
+                    function isPortfolioAlbumUrl(url) {
+                        try {
+                            const parsed = new URL(url, window.location.href);
+                            const normalizedPath = parsed.pathname.replace(/\\/$/, '');
+
+                            return parsed.hostname.endsWith('jeremy.gallery')
+                                && normalizedPath.includes('/portfolio/')
+                                && !normalizedPath.endsWith('/portfolio');
+                        } catch {
+                            return false;
+                        }
+                    }
+
+                    function isUsefulImageUrl(url) {
+                        if (!url) return false;
+
+                        const lower = url.toLowerCase();
+
+                        if (!lower.includes('px-web-images-v2.pixpa.com')) return false;
+                        if (lower.includes('loader')) return false;
+                        if (lower.includes('spinner')) return false;
+                        if (lower.includes('placeholder')) return false;
+                        if (lower.includes('logo')) return false;
+                        if (lower.includes('avatar')) return false;
+                        if (lower.endsWith('.svg')) return false;
+
+                        return true;
+                    }
+
+                    function imageUrlsFromSrcset(srcset) {
+                        if (!srcset) return [];
+
+                        return srcset
+                            .split(',')
+                            .map(part => part.trim().split(/\\s+/)[0])
+                            .filter(Boolean);
+                    }
+
+                    function imageUrlFromBackground(value) {
+                        if (!value || value === 'none') return '';
+
+                        const match = String(value).match(/url\\(["']?(.+?)["']?\\)/);
+                        return match ? match[1] : '';
+                    }
+
+                    function bestImageFromElement(root) {
+                        if (!root) return '';
+
+                        const elements = [root, ...Array.from(root.querySelectorAll('*'))];
+
+                        for (const el of elements) {
+                            const candidates = [];
+
+                            if (el.tagName && el.tagName.toLowerCase() === 'img') {
+                                candidates.push(el.currentSrc);
+                                candidates.push(el.src);
+                                candidates.push(el.getAttribute('src'));
+                                candidates.push(el.getAttribute('data-src'));
+                                candidates.push(el.getAttribute('data-original'));
+                                candidates.push(el.getAttribute('data-large'));
+                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('srcset')));
+                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('data-srcset')));
+                            }
+
+                            if (el.tagName && el.tagName.toLowerCase() === 'source') {
+                                candidates.push(el.getAttribute('src'));
+                                candidates.push(el.getAttribute('data-src'));
+                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('srcset')));
+                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('data-srcset')));
+                            }
+
+                            candidates.push(el.getAttribute && el.getAttribute('data-bg'));
+                            candidates.push(el.getAttribute && el.getAttribute('data-background'));
+                            candidates.push(el.getAttribute && el.getAttribute('data-background-image'));
+
+                            try {
+                                const style = window.getComputedStyle(el);
+                                candidates.push(imageUrlFromBackground(style.backgroundImage));
+                            } catch {}
+
+                            for (const candidate of candidates) {
+                                const fullUrl = absoluteUrl(candidate);
+
+                                if (isUsefulImageUrl(fullUrl)) {
+                                    return fullUrl;
+                                }
+                            }
+                        }
+
+                        return '';
+                    }
+
+                    function isBlockedText(text) {
+                        const normalized = cleanText(text);
+                        const upper = normalized.toUpperCase();
+
+                        const blocked = new Set([
+                            'JEREMY GALLERY',
+                            'HOME',
+                            'BLOG',
+                            'PORTFOLIO',
+                            'CONTACT',
+                            'GET IN TOUCH',
+                            'SUPPORT THE SITE',
+                            'BOOK A SESSION',
+                            'SHARE',
+                            'COPIED',
+                            'ITEM'
+                        ]);
+
+                        return blocked.has(upper);
+                    }
+
+                    function titleFromElement(root) {
+                        if (!root) return '';
+
+                        const prioritySelectors = [
+                            'h1',
+                            'h2',
+                            'h3',
+                            'h4',
+                            '[class*="title" i]',
+                            '[class*="caption" i]',
+                            '[class*="name" i]'
+                        ];
+
+                        for (const selector of prioritySelectors) {
+                            const elements = Array.from(root.querySelectorAll(selector));
+
+                            for (const el of elements) {
+                                const text = cleanText(el.innerText || el.textContent || '');
+
+                                if (text && !isBlockedText(text) && text.length <= 80) {
+                                    return text;
+                                }
+                            }
+                        }
+
+                        const rawText = cleanText(root.innerText || root.textContent || '');
+
+                        if (!rawText) return '';
+
+                        const parts = rawText
+                            .split('\\n')
+                            .map(cleanText)
+                            .filter(Boolean)
+                            .filter(item => !isBlockedText(item))
+                            .filter(item => item.length <= 80);
+
+                        // A real portfolio card usually contains only one short title.
+                        // If the container contains many texts, it is probably too broad.
+                        if (parts.length >= 1 && parts.length <= 4) {
+                            return parts[parts.length - 1];
+                        }
+
+                        return '';
+                    }
+
+                    function portfolioLinkCount(root) {
+                        if (!root) return 0;
+
+                        return Array.from(root.querySelectorAll('a[href*="/portfolio/"]'))
+                            .filter(link => isPortfolioAlbumUrl(link.href || link.getAttribute('href')))
+                            .length;
+                    }
+
+                    const links = Array.from(document.querySelectorAll('a[href*="/portfolio/"]'));
+
+                    for (const link of links) {
+                        const pageUrl = absoluteUrl(link.getAttribute('href'));
+
+                        if (!isPortfolioAlbumUrl(pageUrl)) continue;
+
+                        let container = link;
+                        let accepted = null;
+
+                        for (let depth = 0; depth < 8 && container; depth++) {
+                            const count = portfolioLinkCount(container);
+
+                            // Stop before we reach a broad grid/menu container containing many albums.
+                            if (count > 3) {
+                                break;
+                            }
+
+                            const coverUrl = bestImageFromElement(container);
+                            let title = titleFromElement(container);
+
+                            if (!title) {
+                                title = cleanText(link.innerText || link.textContent || '');
+                            }
+
+                            if (coverUrl && title && !isBlockedText(title)) {
+                                accepted = {
+                                    pageUrl,
+                                    title,
+                                    coverUrl
+                                };
+                                break;
+                            }
+
+                            container = container.parentElement;
+                        }
+
+                        if (accepted) {
+                            results.push(accepted);
+                        }
+                    }
+
+                    return results;
+                }
+                """
+            )
+
+            browser.close()
+
+    except Exception as error:
+        print(f"[WARN] Cannot extract portfolio index albums: {error}")
+        return []
+
+    albums = []
+    seen = set()
+
+    for item in raw_albums:
+        page_url = normalize_text(item.get("pageUrl", ""))
+        title = normalize_text(item.get("title", ""))
+        cover_url = normalize_text(item.get("coverUrl", ""))
+
+        if not page_url or not title or not cover_url:
+            continue
+
+        if not is_portfolio_page(page_url):
+            continue
+
+        if not is_real_gallery_image(cover_url):
+            continue
+
+        album_id = slug_from_url(page_url)
+
+        if album_id in seen:
+            continue
+
+        albums.append(
+            {
+                "id": album_id,
+                "title": title,
+                "pageUrl": page_url,
+                "coverUrl": cover_url,
+            }
+        )
+        seen.add(album_id)
+
+    if TEST_ONLY_MILANO:
+        albums = [album for album in albums if album["id"] == "milano"]
+
+    print(f"[INFO] Portfolio index albums found: {len(albums)}")
+
+    for album in albums:
+        print(
+            f"[INFO] Portfolio index album: "
+            f"{album['id']} | {album['title']} | {album['coverUrl']}"
+        )
+
+    return albums
 
 
 def decode_pixpa_asset_path(url: str) -> str:
@@ -445,17 +770,43 @@ def extract_images_from_page(page_url: str) -> list[str]:
     return images
 
 
-def build_gallery_json() -> dict:
+def build_page_items_from_sitemap() -> list[dict]:
     pages = get_portfolio_pages_from_sitemap()
 
     if not pages:
+        return []
+
+    return [
+        {
+            "id": slug_from_url(page_url),
+            "title": title_from_slug(slug_from_url(page_url)),
+            "pageUrl": page_url,
+            "coverUrl": "",
+        }
+        for page_url in pages
+    ]
+
+
+def build_gallery_json() -> dict:
+    portfolio_index_albums = extract_portfolio_index_albums()
+
+    if portfolio_index_albums:
+        page_items = portfolio_index_albums
+    else:
+        print("[WARN] Portfolio index extraction failed or returned no albums. Falling back to sitemap.")
+        page_items = build_page_items_from_sitemap()
+
+    if not page_items:
         raise RuntimeError("No portfolio pages found.")
 
     albums = []
 
-    for page_url in pages:
-        album_id = slug_from_url(page_url)
-        album_title = title_from_slug(album_id)
+    for item in page_items:
+        album_id = item["id"]
+        album_title = item["title"]
+        page_url = item["pageUrl"]
+        index_cover_url = item.get("coverUrl", "")
+
         image_urls = extract_images_from_page(page_url)
 
         if not image_urls:
@@ -488,7 +839,7 @@ def build_gallery_json() -> dict:
                 "title": album_title,
                 "date": album_date,
                 "pageUrl": page_url,
-                "coverUrl": image_urls[0],
+                "coverUrl": index_cover_url or image_urls[0],
                 "photoCount": len(photos),
                 "photos": photos,
             }
