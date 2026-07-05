@@ -163,10 +163,12 @@ def extract_portfolio_index_albums() -> list[dict]:
     """
     Extract album metadata from the public Portfolio index page.
 
-    The Portfolio index page is the most reliable public source for:
-    1. album display title, e.g. "Hong Kong (2017)"
-    2. album listing cover image
-    3. album page URL
+    Pixpa's public portfolio page exposes album links/titles and listing cover
+    images in separate DOM areas. Therefore, this function reads:
+
+    1. album page URLs and titles from portfolio links
+    2. cover images from visible Pixpa images on the index page
+    3. maps them by their public display order
     """
     print(f"[INFO] Reading portfolio index page: {PORTFOLIO_INDEX_URL}")
 
@@ -182,24 +184,24 @@ def extract_portfolio_index_albums() -> list[dict]:
 
             # Trigger lazy loading on the portfolio index page.
             previous_height = 0
+
             for _ in range(1, 8):
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                page.wait_for_timeout(800)
+                page.wait_for_timeout(1000)
 
                 current_height = page.evaluate("document.body.scrollHeight")
+
                 if current_height == previous_height:
                     break
 
                 previous_height = current_height
 
             page.evaluate("window.scrollTo(0, 0)")
-            page.wait_for_timeout(500)
+            page.wait_for_timeout(800)
 
-            raw_albums = page.evaluate(
+            raw_data = page.evaluate(
                 """
                 () => {
-                    const results = [];
-
                     function cleanText(value) {
                         return String(value || '').replace(/\\s+/g, ' ').trim();
                     }
@@ -227,90 +229,21 @@ def extract_portfolio_index_albums() -> list[dict]:
                         }
                     }
 
-                    function isUsefulImageUrl(url) {
-                        if (!url) return false;
-
-                        const lower = url.toLowerCase();
-
-                        if (!lower.includes('px-web-images-v2.pixpa.com')) return false;
-                        if (lower.includes('loader')) return false;
-                        if (lower.includes('spinner')) return false;
-                        if (lower.includes('placeholder')) return false;
-                        if (lower.includes('logo')) return false;
-                        if (lower.includes('avatar')) return false;
-                        if (lower.endsWith('.svg')) return false;
-
-                        return true;
-                    }
-
-                    function imageUrlsFromSrcset(srcset) {
-                        if (!srcset) return [];
-
-                        return srcset
-                            .split(',')
-                            .map(part => part.trim().split(/\\s+/)[0])
-                            .filter(Boolean);
-                    }
-
-                    function imageUrlFromBackground(value) {
-                        if (!value || value === 'none') return '';
-
-                        const match = String(value).match(/url\\(["']?(.+?)["']?\\)/);
-                        return match ? match[1] : '';
-                    }
-
-                    function bestImageFromElement(root) {
-                        if (!root) return '';
-
-                        const elements = [root, ...Array.from(root.querySelectorAll('*'))];
-
-                        for (const el of elements) {
-                            const candidates = [];
-
-                            if (el.tagName && el.tagName.toLowerCase() === 'img') {
-                                candidates.push(el.currentSrc);
-                                candidates.push(el.src);
-                                candidates.push(el.getAttribute('src'));
-                                candidates.push(el.getAttribute('data-src'));
-                                candidates.push(el.getAttribute('data-original'));
-                                candidates.push(el.getAttribute('data-large'));
-                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('srcset')));
-                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('data-srcset')));
-                            }
-
-                            if (el.tagName && el.tagName.toLowerCase() === 'source') {
-                                candidates.push(el.getAttribute('src'));
-                                candidates.push(el.getAttribute('data-src'));
-                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('srcset')));
-                                candidates.push(...imageUrlsFromSrcset(el.getAttribute('data-srcset')));
-                            }
-
-                            candidates.push(el.getAttribute && el.getAttribute('data-bg'));
-                            candidates.push(el.getAttribute && el.getAttribute('data-background'));
-                            candidates.push(el.getAttribute && el.getAttribute('data-background-image'));
-
-                            try {
-                                const style = window.getComputedStyle(el);
-                                candidates.push(imageUrlFromBackground(style.backgroundImage));
-                            } catch {}
-
-                            for (const candidate of candidates) {
-                                const fullUrl = absoluteUrl(candidate);
-
-                                if (isUsefulImageUrl(fullUrl)) {
-                                    return fullUrl;
-                                }
-                            }
+                    function slugFromUrl(url) {
+                        try {
+                            const parsed = new URL(url, window.location.href);
+                            const path = parsed.pathname.replace(/\\/$/, '');
+                            return path.split('/').pop().toLowerCase();
+                        } catch {
+                            return '';
                         }
-
-                        return '';
                     }
 
-                    function isBlockedText(text) {
-                        const normalized = cleanText(text);
-                        const upper = normalized.toUpperCase();
+                    function isBlockedTitle(text) {
+                        const upper = cleanText(text).toUpperCase();
 
                         const blocked = new Set([
+                            '',
                             'JEREMY GALLERY',
                             'HOME',
                             'BLOG',
@@ -327,102 +260,120 @@ def extract_portfolio_index_albums() -> list[dict]:
                         return blocked.has(upper);
                     }
 
-                    function titleFromElement(root) {
-                        if (!root) return '';
+                    function isUsefulImageUrl(url) {
+                        if (!url) return false;
 
-                        const prioritySelectors = [
-                            'h1',
-                            'h2',
-                            'h3',
-                            'h4',
-                            '[class*="title" i]',
-                            '[class*="caption" i]',
-                            '[class*="name" i]'
-                        ];
+                        const lower = url.toLowerCase();
 
-                        for (const selector of prioritySelectors) {
-                            const elements = Array.from(root.querySelectorAll(selector));
+                        if (!lower.includes('px-web-images-v2.pixpa.com')) return false;
+                        if (lower.includes('loader')) return false;
+                        if (lower.includes('spinner')) return false;
+                        if (lower.includes('placeholder')) return false;
+                        if (lower.includes('logo')) return false;
+                        if (lower.includes('avatar')) return false;
+                        if (lower.endsWith('.svg')) return false;
 
-                            for (const el of elements) {
-                                const text = cleanText(el.innerText || el.textContent || '');
+                        return true;
+                    }
 
-                                if (text && !isBlockedText(text) && text.length <= 80) {
-                                    return text;
-                                }
-                            }
+                    function urlsFromSrcset(srcset) {
+                        if (!srcset) return [];
+
+                        return srcset
+                            .split(',')
+                            .map(part => part.trim().split(/\\s+/)[0])
+                            .filter(Boolean);
+                    }
+
+                    function backgroundImageUrl(value) {
+                        if (!value || value === 'none') return '';
+
+                        const match = String(value).match(/url\\(["']?(.+?)["']?\\)/);
+                        return match ? match[1] : '';
+                    }
+
+                    function bestImageUrlForElement(el) {
+                        const candidates = [];
+
+                        candidates.push(el.currentSrc);
+                        candidates.push(el.src);
+                        candidates.push(el.getAttribute && el.getAttribute('src'));
+                        candidates.push(el.getAttribute && el.getAttribute('data-src'));
+                        candidates.push(el.getAttribute && el.getAttribute('data-original'));
+                        candidates.push(el.getAttribute && el.getAttribute('data-large'));
+                        candidates.push(el.getAttribute && el.getAttribute('data-bg'));
+                        candidates.push(el.getAttribute && el.getAttribute('data-background'));
+                        candidates.push(el.getAttribute && el.getAttribute('data-background-image'));
+
+                        if (el.getAttribute) {
+                            candidates.push(...urlsFromSrcset(el.getAttribute('srcset')));
+                            candidates.push(...urlsFromSrcset(el.getAttribute('data-srcset')));
                         }
 
-                        const rawText = cleanText(root.innerText || root.textContent || '');
+                        try {
+                            const style = window.getComputedStyle(el);
+                            candidates.push(backgroundImageUrl(style.backgroundImage));
+                        } catch {}
 
-                        if (!rawText) return '';
+                        for (const candidate of candidates) {
+                            const fullUrl = absoluteUrl(candidate);
 
-                        const parts = rawText
-                            .split('\\n')
-                            .map(cleanText)
-                            .filter(Boolean)
-                            .filter(item => !isBlockedText(item))
-                            .filter(item => item.length <= 80);
-
-                        // A real portfolio card usually contains only one short title.
-                        // If the container contains many texts, it is probably too broad.
-                        if (parts.length >= 1 && parts.length <= 4) {
-                            return parts[parts.length - 1];
+                            if (isUsefulImageUrl(fullUrl)) {
+                                return fullUrl;
+                            }
                         }
 
                         return '';
                     }
 
-                    function portfolioLinkCount(root) {
-                        if (!root) return 0;
+                    // 1. Read album links and public display titles.
+                    // The same menu appears more than once on Pixpa pages, so we de-duplicate by slug.
+                    const albumLinks = [];
+                    const seenAlbumSlugs = new Set();
 
-                        return Array.from(root.querySelectorAll('a[href*="/portfolio/"]'))
-                            .filter(link => isPortfolioAlbumUrl(link.href || link.getAttribute('href')))
-                            .length;
-                    }
-
-                    const links = Array.from(document.querySelectorAll('a[href*="/portfolio/"]'));
-
-                    for (const link of links) {
+                    document.querySelectorAll('a[href*="/portfolio/"]').forEach(link => {
                         const pageUrl = absoluteUrl(link.getAttribute('href'));
 
-                        if (!isPortfolioAlbumUrl(pageUrl)) continue;
+                        if (!isPortfolioAlbumUrl(pageUrl)) return;
 
-                        let container = link;
-                        let accepted = null;
+                        const slug = slugFromUrl(pageUrl);
+                        const title = cleanText(link.innerText || link.textContent || '');
 
-                        for (let depth = 0; depth < 8 && container; depth++) {
-                            const count = portfolioLinkCount(container);
+                        if (!slug || !title || isBlockedTitle(title)) return;
 
-                            // Stop before we reach a broad grid/menu container containing many albums.
-                            if (count > 3) {
-                                break;
-                            }
+                        if (seenAlbumSlugs.has(slug)) return;
 
-                            const coverUrl = bestImageFromElement(container);
-                            let title = titleFromElement(container);
+                        albumLinks.push({
+                            id: slug,
+                            title,
+                            pageUrl
+                        });
 
-                            if (!title) {
-                                title = cleanText(link.innerText || link.textContent || '');
-                            }
+                        seenAlbumSlugs.add(slug);
+                    });
 
-                            if (coverUrl && title && !isBlockedText(title)) {
-                                accepted = {
-                                    pageUrl,
-                                    title,
-                                    coverUrl
-                                };
-                                break;
-                            }
+                    // 2. Read cover images from portfolio index page by visible order.
+                    const coverUrls = [];
+                    const seenCoverUrls = new Set();
 
-                            container = container.parentElement;
-                        }
+                    const imageElements = Array.from(
+                        document.querySelectorAll('img, source, picture, [style]')
+                    );
 
-                        if (accepted) {
-                            results.push(accepted);
-                        }
+                    for (const el of imageElements) {
+                        const coverUrl = bestImageUrlForElement(el);
+
+                        if (!coverUrl) continue;
+                        if (seenCoverUrls.has(coverUrl)) continue;
+
+                        coverUrls.push(coverUrl);
+                        seenCoverUrls.add(coverUrl);
                     }
 
-                    return results;
+                    return {
+                        albumLinks,
+                        coverUrls
+                    };
                 }
                 """
             )
@@ -433,27 +384,32 @@ def extract_portfolio_index_albums() -> list[dict]:
         print(f"[WARN] Cannot extract portfolio index albums: {error}")
         return []
 
-    albums = []
-    seen = set()
+    album_links = raw_data.get("albumLinks", [])
+    cover_urls = raw_data.get("coverUrls", [])
 
-    for item in raw_albums:
+    print(f"[INFO] Portfolio index album links found: {len(album_links)}")
+    print(f"[INFO] Portfolio index cover images found: {len(cover_urls)}")
+
+    albums = []
+
+    for index, item in enumerate(album_links):
         page_url = normalize_text(item.get("pageUrl", ""))
         title = normalize_text(item.get("title", ""))
-        cover_url = normalize_text(item.get("coverUrl", ""))
+        album_id = normalize_text(item.get("id", ""))
 
-        if not page_url or not title or not cover_url:
+        if not page_url or not title or not album_id:
             continue
 
         if not is_portfolio_page(page_url):
             continue
 
-        if not is_real_gallery_image(cover_url):
-            continue
+        cover_url = ""
 
-        album_id = slug_from_url(page_url)
+        if index < len(cover_urls):
+            candidate_cover_url = normalize_text(cover_urls[index])
 
-        if album_id in seen:
-            continue
+            if is_real_gallery_image(candidate_cover_url):
+                cover_url = candidate_cover_url
 
         albums.append(
             {
@@ -463,7 +419,6 @@ def extract_portfolio_index_albums() -> list[dict]:
                 "coverUrl": cover_url,
             }
         )
-        seen.add(album_id)
 
     if TEST_ONLY_MILANO:
         albums = [album for album in albums if album["id"] == "milano"]
